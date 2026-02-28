@@ -5,14 +5,13 @@ body { font-family: 'Segoe UI', sans-serif; margin: 0; background-color: #f4f4f4
 .header { 
     background-color: #a532b2; 
     color: white; 
-    padding: 20px 0; 
+    padding: 15px 10px;
     text-align: center; 
     position: sticky; 
     top: 0; 
     z-index: 1000; 
 }
 
-#main-title { color: #e2f42a; margin: 0 0 10px 0; }
 #buscador { width: 85%; max-width: 400px; padding: 10px; border-radius: 20px; border: none; outline: none; }
 
 /* --- GRILLAS --- */
@@ -234,4 +233,64 @@ body { font-family: 'Segoe UI', sans-serif; margin: 0; background-color: #f4f4f4
     border-radius: 10px;
     font-size: 0.8rem;
     margin-left: 5px;
+}
+
+.main-footer {
+    background-color: #a532b2; /* Tu púrpura característico */
+    color: white;
+    padding: 30px 0;
+    margin-top: 50px;
+    text-align: center;
+}
+
+.footer-content h3 {
+    color: #e2f42a; /* Tu amarillo neón */
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.footer-content p {
+    margin: 8px 0;
+    font-size: 0.9rem;
+}
+
+.social-links {
+    font-size: 1.5rem;
+    margin: 15px 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.footer-content hr {
+    border: 0;
+    border-top: 1px solid rgba(255,255,255,0.2);
+    width: 80%;
+    margin: 20px auto;
+}
+
+.copyright {
+    font-size: 0.7rem;
+    opacity: 0.7;
+}
+
+#main-title { 
+    color: #e2f42a; 
+    margin: 0 0 10px 0; 
+    font-size: 1.5rem; /* Achicamos un poco el tamaño base */
+    line-height: 1.1;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#main-title span {
+    font-size: 2.4rem; /* Antes era 1rem; ahora es notablemente más grande */
+    display: inline-block; /* Reemplazamos block por inline-block para un mejor control */
+    opacity: 0.95; /* Ligeramente más opaco para que se lea mejor */
+    margin-top: 2px; /* Pequeño ajuste de espacio con la línea de arriba */
+}
+
+/* Ajuste para que el buscador y el nombre convivan bien */
+.header {
+    padding: 15px 10px;
 }

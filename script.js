@@ -83,25 +83,25 @@ function mostrarProductos(nombreRubro) {
 function agregarAlCarrito(nombre, precio, event) {
     // 1. Lógica de carrito
     carrito.push({ nombre, precio });
-    
+
     // 2. Actualizar contador
     const contador = document.getElementById('cart-counter');
     if (contador) contador.innerText = carrito.length;
-    
+
     // 3. Crear el aviso
     const cartel = document.createElement("span");
     cartel.innerText = "¡Agregado!";
     cartel.className = "aviso-agregado";
-    
+
     // Lo metemos en el padre (la tarjeta) para que no falle
     const boton = event.currentTarget || event.target;
     const contenedorPadre = boton.parentElement;
-    
+
     // IMPORTANTE: Aseguramos que el padre sea el punto de referencia
     contenedorPadre.style.position = "relative";
-    
+
     contenedorPadre.appendChild(cartel);
-    
+
     // 4. Limpieza
     setTimeout(() => {
         cartel.remove();
@@ -166,6 +166,15 @@ if (btnWsp) {
 
         // Tu número: 3513018831
         window.open(`https://wa.me/5493513018831?text=${mensaje}`, '_blank');
+
+        // --- REINICIO TOTAL ---
+        carrito = []; // Vacía el array interno
+        
+        // Actualiza el contador visual en el botón del header
+        const contador = document.getElementById('cart-counter');
+        if (contador) contador.innerText = "0"; 
+
+        cerrarModal(); // Cierra la ventana
     };
 }
 
