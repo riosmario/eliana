@@ -1,32 +1,29 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tienda Virtual - Catálogo</title>
+    <title>El Cielito de Eliana - Tienda</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-
 <body>
     <header class="header">
         <div class="header-content">
-
             <button id="btn-volver" onclick="mostrarRubros()" class="btn-volver-estilo" style="display: none;">
-                VOLVER
+                <i class="fas fa-arrow-left"></i>
             </button>
 
             <h1 id="main-title">EL CIELITO <br> <span>DE ELIANA</span></h1>
 
             <button onclick="abrirModal()" class="btn-cart-header">
-                <i class="fas fa-shopping-cart"></i> Ver Pedido (<span id="cart-counter">0</span>)
+                <i class="fas fa-shopping-cart"></i> (<span id="cart-counter">0</span>)
             </button>
-
-            <div class="search-container">
-                <input type="text" id="buscador" placeholder="¿Qué estás buscando?" onkeyup="buscarProductos()">
-            </div>
         </div>
-        <div id="sub-menu-container" class="sub-bar"></div>
+        
+        <div class="search-container">
+            <input type="text" id="buscador" placeholder="¿Qué estás buscando?" onkeyup="buscarProductos()">
+        </div>
     </header>
 
     <main class="container">
@@ -36,18 +33,13 @@
     <div id="modal-carrito" class="modal">
         <div class="modal-content">
             <span class="close" onclick="cerrarModal()">&times;</span>
-            <div class="modal-header">
-                <h2>📋 Resumen de Pedido</h2>
+            <h2>📋 Resumen de Pedido</h2>
+            <div id="lista-carrito"></div>
+            <div class="total-container">
+                <strong>Total:</strong> <span id="total-precio">$0</span>
             </div>
-            <div id="lista-carrito" class="modal-body"></div>
-            <div class="modal-footer">
-                <div class="total-container">
-                    <strong>Total a pagar:</strong>
-                    <span id="total-precio">$0</span>
-                </div>
-                <button id="btn-whatsapp" class="btn-send">🚀 Enviar Pedido por WhatsApp</button>
-                <button onclick="cerrarModal()" class="btn-continue">Continuar comprando</button>
-            </div>
+            <button id="btn-whatsapp">🚀 Enviar Pedido por WhatsApp</button>
+            <button onclick="cerrarModal()">Continuar comprando</button>
         </div>
     </div>
 
@@ -58,21 +50,17 @@
     </div>
 
     <footer class="main-footer">
-        <h3>🌈 EL CIELITO DE ELIANA</h3>
-        <div class="footer-content">
-            <h3>🎒 Nombre de tu Negocio</h3>
+        <div class="footer-info">
+            <h3>🌈 EL CIELITO DE ELIANA</h3>
             <p><i class="fas fa-map-marker-alt"></i> Córdoba, Argentina</p>
             <p><i class="fas fa-phone-alt"></i> 3513018831</p>
             <div class="social-links">
-                <i class="fab fa-instagram"></i>
-                <i class="fab fa-facebook"></i>
+                <i class="fab fa-instagram"></i> <i class="fab fa-facebook"></i>
             </div>
-            <hr>
             <p class="copyright">© 2026 - Temporada Escolar</p>
         </div>
     </footer>
 
     <script src="script.js"></script>
 </body>
-
 </html>
