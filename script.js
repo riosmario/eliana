@@ -1,13 +1,13 @@
 // 1. BASE DE DATOS UNIFICADA
 const baseDeDatos = {
-    "ARTICULOS ESCOLARES": {
+    "✏️ ARTICULOS ESCOLARES": {
         imagen: "img/rubros/libreria.png",
         productos: [
             { nombre: "Diccionario Artemisa Ingles-Español", precio: 7500, img: "img/dic1.jpg" },
             { nombre: "Diccionario LAPRIDA Español", precio: 8500, img: "img/dic2.jpg" }
         ]
     },
-    "MOCHILAS": {
+    "🎒 MOCHILAS": {
         imagen: "img/rubros/mochila.jpg",
         productos: [
             { nombre: "Cool Girl", precio: 16900, img: "img/rubros/mochilas/cool_girld.jpg" },
@@ -24,7 +24,23 @@ const baseDeDatos = {
             { nombre: "Lentejuelas", precio: 14000, img: "img/rubros/mochilas/lentejuelas.jpg" },
             { nombre: "Mochila Jardín", precio: 12000, img: "img/rubros/mochilas/mochila_jardin.jpg" }
         ]
-    }
+    },
+
+    "🍽️ BAZAR ESCOLAR": {
+        imagen: "img/rubros/bazar_escolar.jpg",
+        productos: [
+            { nombre: "Botella Deportiva multicolor", precio: 4500, img: "img/rubros/bazar_escolar/botella_deportiva_multicolor.jpg" },
+            { nombre: "Botella de personaje", precio: 4500, img: "img/rubros/bazar_escolar/botella_deportiva_personajes.jpg" },
+            { nombre: "Lonchera Personaje", precio: 8500, img: "img/rubros/bazar_escolar/lonchera_personajes.jpg" },
+            { nombre: "Set Jabonera y Toalla 01", precio: 3200, img: "img/rubros/bazar_escolar/set_jaboner_y_toalla.jpg" },
+            { nombre: "Set Jabonera y Toalla 02", precio: 3200, img: "img/rubros/bazar_escolar/set_jaboner_y_toalla_02.jpg" },
+            { nombre: "Set Jabonera y Toalla 03", precio: 3200, img: "img/rubros/bazar_escolar/set_jaboner_y_toalla_03.jpg" },
+            { nombre: "Set Jabonera y Toalla 04", precio: 3200, img: "img/rubros/bazar_escolar/set_jaboner_y_toalla_04.jpg" },
+            { nombre: "Set Jabonera y Toalla 05", precio: 3200, img: "img/rubros/bazar_escolar/set_jaboner_y_toalla_05.jpg" },
+            { nombre: "Set Jabonera y Toalla 06", precio: 3200, img: "img/rubros/bazar_escolar/set_jaboner_y_toalla_06.jpg" },
+            { nombre: "Set Jabonera y Toalla 07", precio: 3200, img: "img/rubros/bazar_escolar/set_jaboner_y_toalla_07.jpg" }
+        ]
+    },
 };
 
 let carrito = [];
@@ -120,6 +136,7 @@ function abrirModal() {
     const modal = document.getElementById('modal-carrito');
     const lista = document.getElementById('lista-carrito');
     const totalTxt = document.getElementById('total-precio');
+    const btnWsp = document.getElementById('btn-whatsapp'); // Traemos el botón
 
     if (!modal || !lista) return;
 
@@ -128,15 +145,19 @@ function abrirModal() {
     let totalAcumulado = 0;
 
     if (carrito.length === 0) {
-        lista.innerHTML = '<p style="text-align:center;">Tu carrito está vacío</p>';
+        lista.innerHTML = '<p style="text-align:center; padding: 20px;">Tu carrito está vacío 🛒</p>';
+        if (btnWsp) btnWsp.style.opacity = "0.5"; // Lo ponemos clarito si no hay nada
     } else {
+        if (btnWsp) btnWsp.style.opacity = "1";
         carrito.forEach((item, index) => {
             totalAcumulado += item.precio;
             lista.innerHTML += `
-                <div class="item-carrito" style="display:flex; justify-content:space-between; margin-bottom:10px; border-bottom:1px solid #eee; padding:5px;">
-                    <span>${item.nombre}</span>
-                    <span>$${item.precio}</span>
-                    <button onclick="eliminarDelCarrito(${index})" style="background:none; border:none; color:red; cursor:pointer;">❌</button>
+                <div class="item-carrito" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; border-bottom:1px solid #eee; padding:5px;">
+                    <span style="font-size:0.9rem;">${item.nombre}</span>
+                    <div>
+                        <span style="font-weight:bold; margin-right:10px;">$${item.precio}</span>
+                        <button onclick="eliminarDelCarrito(${index})" style="background:none; border:none; color:red; cursor:pointer; font-size:1.2rem;">×</button>
+                    </div>
                 </div>
             `;
         });
@@ -190,6 +211,47 @@ function agrandarImagen(src, nombre) {
 function cerrarImagen() {
     const modal = document.getElementById("modal-imagen");
     if (modal) modal.style.display = "none";
+}
+
+// 7. FUNCIÓN DE BÚSQUEDA
+function buscarProductos() {
+    const input = document.getElementById('buscador'); // Tiene que decir 'buscador'
+    const filtro = input.value.toLowerCase();
+    const contenedor = document.getElementById("productos-grid");
+    const btnVolver = document.getElementById("btn-volver");
+
+    // Si el buscador está vacío, volvemos a mostrar los rubros
+    if (filtro === "") {
+        mostrarRubros();
+        return;
+    }
+
+    // Limpiamos la pantalla
+    contenedor.innerHTML = "";
+    contenedor.className = "lista-productos-detalle";
+    if (btnVolver) btnVolver.style.display = "block";
+
+    // Recorremos la base de datos buscando coincidencias
+    Object.keys(baseDeDatos).forEach(categoria => {
+        baseDeDatos[categoria].productos.forEach(p => {
+            if (p.nombre.toLowerCase().includes(filtro)) {
+                const tarjeta = document.createElement("div");
+                tarjeta.className = "tarjeta-horizontal";
+                tarjeta.innerHTML = `
+                    <img src="${p.img}" onclick="agrandarImagen('${p.img}', '${p.nombre}')">
+                    <h3>${p.nombre}</h3>
+                    <p class="precio">$${p.precio}</p>
+                    <button class="btn-add" onclick="agregarAlCarrito('${p.nombre}', ${p.precio}, event)">+</button>
+                `;
+                contenedor.appendChild(tarjeta);
+            }
+        });
+    });
+
+    // Si no encuentra nada
+    if (contenedor.innerHTML === "") {
+        contenedor.innerHTML = `<p style="text-align:center; padding:20px;">No encontramos "${filtro}"... 🔍</p>`;
+    }
 }
 
 // Iniciar al cargar
