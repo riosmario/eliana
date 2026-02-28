@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda Virtual - Catálogo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-content">
+
+            <button id="btn-volver" onclick="mostrarRubros()" class="btn-volver-estilo" style="display: none;">
+                VOLVER
+            </button>
+
+            <h1 id="main-title">Nuestros Productos</h1>
+
+            <button onclick="abrirModal()" class="btn-cart-header">
+                <i class="fas fa-shopping-cart"></i> Ver Pedido (<span id="cart-counter">0</span>)
+            </button>
+
+            <div class="search-container">
+                <input type="text" id="buscador" placeholder="¿Qué estás buscando?" onkeyup="buscarProductos()">
+            </div>
+        </div>
+        <div id="sub-menu-container" class="sub-bar"></div>
+    </header>
+
+    <main class="container">
+        <section id="productos-grid" class="grid-container"></section>
+    </main>
+
+    <div id="modal-carrito" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="cerrarModal()">&times;</span>
+            <div class="modal-header">
+                <h2>📋 Resumen de Pedido</h2>
+            </div>
+            <div id="lista-carrito" class="modal-body"></div>
+            <div class="modal-footer">
+                <div class="total-container">
+                    <strong>Total a pagar:</strong>
+                    <span id="total-precio">$0</span>
+                </div>
+                <button id="btn-whatsapp" class="btn-send">🚀 Enviar Pedido por WhatsApp</button>
+                <button onclick="cerrarModal()" class="btn-continue">Continuar comprando</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-imagen" class="modal-img" onclick="cerrarImagen()">
+        <span class="close-img">&times;</span>
+        <img id="img-agrandada" class="modal-img-contenido">
+        <div id="caption-imagen"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

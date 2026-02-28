@@ -1,0 +1,237 @@
+/* --- BASE Y HEADER --- */
+body { font-family: 'Segoe UI', sans-serif; margin: 0; background-color: #f4f4f4; color: #333; }
+.container { max-width: 1000px; margin: 0 auto; padding: 20px; }
+
+.header { 
+    background-color: #a532b2; 
+    color: white; 
+    padding: 20px 0; 
+    text-align: center; 
+    position: sticky; 
+    top: 0; 
+    z-index: 1000; 
+}
+
+#main-title { color: #e2f42a; margin: 0 0 10px 0; }
+#buscador { width: 85%; max-width: 400px; padding: 10px; border-radius: 20px; border: none; outline: none; }
+
+/* --- GRILLAS --- */
+/* Esta se usa para los RUBROS (Grandes) */
+.grid-container {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 15px;
+    min-height: 200px;
+}
+
+/* Esta se usa para los PRODUCTOS (Mosaico pequeño) */
+.lista-productos-detalle { 
+    display: grid !important; 
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)) !important; 
+    gap: 15px; 
+}
+
+/* --- TARJETAS DE RUBROS --- */
+.product-card-rubro { 
+    position: relative; 
+    height: 140px; 
+    border-radius: 12px; 
+    overflow: hidden; 
+    cursor: pointer; 
+}
+.product-card-rubro img { width: 100%; height: 100%; object-fit: cover; }
+.overlay-rubro { 
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+    background: rgba(0,0,0,0.4); display: flex; justify-content: center; 
+    align-items: center; color: white; font-weight: bold; text-transform: uppercase; 
+}
+
+/* --- TARJETAS DE PRODUCTOS --- */
+.tarjeta-horizontal { 
+    background: white; border-radius: 15px; padding: 15px; 
+    display: flex; flex-direction: column; align-items: center; 
+    text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.1); 
+}
+.tarjeta-horizontal img { width: 100%; height: 130px; object-fit: contain; cursor: zoom-in; margin-bottom: 10px; }
+.tarjeta-horizontal h3 { font-size: 0.9rem; height: 35px; margin: 5px 0; overflow: hidden; }
+.precio { color: #a532b2; font-weight: bold; font-size: 1.1rem; margin-bottom: 10px; }
+.btn-add { 
+    background-color: #e2f42a; color: #a532b2; border: none; 
+    width: 35px; height: 35px; border-radius: 50%; font-weight: bold; cursor: pointer; 
+}
+
+/* --- MODALES (Carrito y Foto) --- */
+/* --- MODALES (Carrito y Foto) --- */
+.modal, .modal-img { 
+    display: none; 
+    position: fixed; 
+    z-index: 3000; 
+    left: 0; 
+    top: 0; 
+    width: 100vw; /* Ancho total de ventana */
+    height: 100vh; /* Alto total de ventana */
+    background: rgba(0,0,0,0.7); 
+    
+    /* Centrado absoluto */
+    justify-content: center; 
+    align-items: center; 
+}
+
+.modal-content { 
+    background: white; 
+    padding: 25px; 
+    border-radius: 20px; 
+    width: 90%; 
+    max-width: 450px; 
+    position: relative; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    margin: 0; /* Eliminamos cualquier margen que lo empuje */
+}
+
+.modal-img-contenido { max-width: 90%; max-height: 80%; border-radius: 10px; }
+.close, .close-img { position: absolute; top: 15px; right: 20px; font-size: 30px; cursor: pointer; color: #333; }
+.close-img { color: white; }
+
+.btn-volver {
+    background: none;
+    border: none;
+    color: #e2f42a; /* Tu amarillo característico */
+    font-size: 1rem;
+    cursor: pointer;
+    position: absolute;
+    left: 15px;
+    top: 15px;
+    font-weight: bold;
+    z-index: 10;
+}
+
+.btn-volver-estilo {
+    background-color: #e2f42a; /* Tu amarillo neón */
+    color: #a532b2;            /* Tu púrpura de fondo */
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;       /* Forma de píldora */
+    font-weight: bold;
+    font-size: 0.9rem;
+    cursor: pointer;
+    position: absolute;        /* Para que no mueva el título */
+    left: 15px;
+    top: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: transform 0.2s;
+}
+
+.btn-volver-estilo:hover {
+    transform: scale(1.05);
+    background-color: #f0ff42; /* Un amarillo un poco más brillante al pasar el mouse */
+}  
+
+.aviso-agregado {
+    position: absolute;
+    /* Ajustamos para que aparezca justo arriba del botón */
+    bottom: 50px; 
+    left: 50%;
+    transform: translateX(-50%);
+    
+    background-color: #4CAF50;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 20px; /* Más redondeado, tipo burbuja */
+    font-size: 13px;
+    font-weight: bold;
+    box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+    z-index: 999;
+    white-space: nowrap;
+    pointer-events: none;
+    animation: aparecerYSubir 1.5s ease-out;
+}
+
+@keyframes aparecerYSubir {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, 10px);
+    }
+    20% {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -20px);
+    }
+}
+
+/* Botón de Enviar Pedido */
+#btn-whatsapp {
+    background-color: #25d366; /* Verde WhatsApp */
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%; /* Para que sea fácil de tocar en el celu */
+    margin-top: 15px;
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+#btn-whatsapp:hover {
+    background-color: #128c7e;
+    transform: scale(1.02);
+}
+
+/* Botón de Continuar Comprando */
+.modal-content button:last-child {
+    background: none;
+    border: 1px solid #ccc;
+    color: #666;
+    padding: 8px;
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+/* Botón "Ver Pedido" en el Header */
+.btn-cart-header {
+    background-color: #e2f42a; /* Tu amarillo característico */
+    color: #a532b2;           /* Tu púrpura de fondo */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.2s, background-color 0.2s;
+    margin: 10px 0;
+}
+
+.btn-cart-header:hover {
+    background-color: #f0ff42; /* Brillo al pasar el mouse */
+    transform: scale(1.05);
+}
+
+/* El ícono dentro del botón */
+.btn-cart-header i {
+    font-size: 1.1rem;
+}
+
+/* El número (contador) para que resalte */
+#cart-counter {
+    background-color: #a532b2;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 0.8rem;
+    margin-left: 5px;
+}
