@@ -3,10 +3,32 @@ const baseDeDatos = {
     "✏️ ARTICULOS ESCOLARES": {
         imagen: "img/rubros/libreria.png",
         productos: [
-            { nombre: "Diccionario Artemisa Ingles-Español", precio: 7500, img: "img/dic1.jpg" },
-            { nombre: "Diccionario LAPRIDA Español", precio: 8500, img: "img/dic2.jpg" }
+            { nombre: "Fibrón Ositos", precio: 1200, img: "img/rubros/escolar/fibron_ositos.jpg" },
+            { nombre: "Fibrones Ezco x12", precio: 4500, img: "img/rubros/escolar/fibrones_ezco_x12.jpg" },
+            { nombre: "Fibrón Olami x12", precio: 4200, img: "img/rubros/escolar/fibron_olami_x12.jpg" },
+            { nombre: "Fibrón Olami x36", precio: 8900, img: "img/rubros/escolar/fibron_olami_x36.jpg" },
+            { nombre: "Fibrón Olami x48", precio: 11500, img: "img/rubros/escolar/fibron_olami_x48.jpg" },
+            { nombre: "Fibrón Ezco x36", precio: 7800, img: "img/rubros/escolar/fibron_ezco_x36.jpg" },
+            { nombre: "Fibrón Pizarra x4 Básicos", precio: 3500, img: "img/rubros/escolar/fibron_pizarra_x4_basicos.jpg" },
+            { nombre: "Fibrón Pizarra x4 No Básicos", precio: 3500, img: "img/rubros/escolar/fibron_pizarra_x4_nobasico.jpg" },
+            { nombre: "Lapiceras Color x4 Filgo", precio: 2200, img: "img/rubros/escolar/lapiceras_color_x4_filgo.jpg" },
+            { nombre: "Temperas Maped x12", precio: 3800, img: "img/rubros/escolar/temperas_maped_x12.jpg" },
+            { nombre: "Foli N3 Luma", precio: 1500, img: "img/rubros/escolar/foli_n3_luma.jpg" },
+            { nombre: "Lapiceras Dolche x12", precio: 5500, img: "img/rubros/escolar/lapiceras_dolche_x12.jpg" },
+            { nombre: "Tijera Maped 17cm", precio: 1800, img: "img/rubros/escolar/tijera_maped_17cm.jpg" },
+            { nombre: "Canopla 20cm", precio: 2500, img: "img/rubros/escolar/canopla_20cm.jpg" },
+            { nombre: "Canopla 20cm x 7cm", precio: 2800, img: "img/rubros/escolar/canopla_20cmx7cm.jpg" },
+            { nombre: "Estuche de Arte 42 piezas Nena", precio: 12500, img: "img/rubros/escolar/estuche_de_arte_42 piezas_nena.jpg" },
+            { nombre: "Estuche de Arte 42 piezas Varón", precio: 12500, img: "img/rubros/escolar/estuche_de_arte_42 piezas_varon.jpg" },
+            { nombre: "Funda Cuadernos 50hj", precio: 900, img: "img/rubros/escolar/funda_cuadernos_50hj.jpg" },
+            { nombre: "Cartuchera Maped 4 Cuerpos", precio: 9500, img: "img/rubros/escolar/cartuchera_maped_4cuerpos.jpg" },
+            { nombre: "Colores Filgo x12 Largos", precio: 3200, img: "img/rubros/escolar/colores_filgo_x12largos.jpg" },
+            { nombre: "Set Geometría Económico", precio: 1800, img: "img/rubros/escolar/set_geometria_economico.jpg" },
+            { nombre: "Tapas N3 Caroeta", precio: 2200, img: "img/rubros/escolar/tapas_n3_caroeta.jpg" },
+            { nombre: "Lápices Negros con Goma x12", precio: 2400, img: "img/rubros/escolar/lapices_negro_con_goma_x12.jpg" }
         ]
     },
+
     "🎒 MOCHILAS": {
         imagen: "img/rubros/mochila.jpg",
         productos: [

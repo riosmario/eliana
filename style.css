@@ -61,12 +61,22 @@ body { font-family: 'Segoe UI', sans-serif; margin: 0; background-color: #f4f4f4
 }
 
 .btn-volver-estilo {
-    background-color: #e2f42a;
-    color: #a532b2;
+    background-color: #ccff00; /* Ese verde lima llamativo */
+    color: #a532b2;            /* Texto violeta para que contraste */
     border: none;
-    padding: 8px 12px;
-    border-radius: 50%;
+    padding: 8px 20px;         /* Espaciado para que parezca un óvalo */
+    border-radius: 50px;       /* Bordes muy redondeados */
+    font-weight: bold;
+    text-transform: uppercase; /* Todo en mayúsculas como en tu foto */
+    display: flex;
+    align-items: center;
+    gap: 8px;                  /* Espacio entre la flecha y el texto */
     cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Una pequeña sombra para que flote */
+}
+
+.btn-volver-estilo i {
+    margin-right: 8px; /* Esto separa la flecha de la palabra Volver */
 }
 
 /* --- GRILLAS --- */
@@ -91,14 +101,52 @@ body { font-family: 'Segoe UI', sans-serif; margin: 0; background-color: #f4f4f4
 .btn-add { background: #e2f42a; border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; font-weight: bold; }
 
 /* --- MODALES --- */
-.modal, .modal-img { 
-    display: none; position: fixed; z-index: 3000; left: 0; top: 0; 
-    width: 100vw; height: 100vh; background: rgba(0,0,0,0.8); 
-    justify-content: center; align-items: center; 
+/* --- MODALES (Inspirado en tu referencia) --- */
+.modal-img {
+    display: none; 
+    position: fixed; 
+    z-index: 3000; /* Asegurarnos que esté por encima de TODO */
+    left: 0; 
+    top: 0; 
+    width: 100vw; 
+    height: 100vh; 
+    background: rgba(0,0,0,0.9); /* Fondo negro traslúcido para que resalte la foto */
+    justify-content: center; /* Centra horizontalmente la imagen */
+    align-items: center; /* Centra verticalmente la imagen */
 }
+
+/* El contenido del carrito */
 .modal-content { 
-    background: white; padding: 20px; border-radius: 15px; 
-    width: 90%; max-width: 400px; position: relative; 
+    background: white; 
+    padding: 20px; 
+    border-radius: 15px; 
+    width: 90%; 
+    max-width: 400px; 
+    position: relative; 
+}
+
+/* NUEVO: La imagen de zoom simplificada */
+.modal-img-contenido {
+    margin: auto;
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 90%; /* No se sale de los costados de la pantalla */
+    max-height: 85vh; /* Ocupa casi todo el alto, pero deja espacio */
+    object-fit: contain; /* Mantiene la proporción sin deformarse */
+    border-radius: 15px; /* Para que combine con tu estilo redondeado */
+    border: 5px solid white; /* Un marco blanco prolijo como en tu foto */
+    box-shadow: 0 0 20px rgba(0,0,0,0.5); /* Una pequeña sombra para que flote */
+}
+
+/* El texto que aparece abajo de la foto (ej: "Ya empiezan las clases") */
+#caption-imagen {
+    color: #e2f42a; /* El amarillo de tu logo */
+    font-weight: bold;
+    text-align: center;
+    padding: 15px;
+    width: 100%;
+    font-size: 1.2rem;
 }
 
 /* --- FOOTER --- */
