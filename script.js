@@ -241,7 +241,10 @@ function enviarWhatsApp() {
     });
 
     mensaje += "--------------------------%0A";
-    mensaje += `*Total: $${total}*`;
+    mensaje += `*Total: $${total}*%0A`; // Agregamos un salto aquí
+    mensaje += "%0A";
+    mensaje += "Este precio es: %0A"; // Esta es la nueva leyenda
+    mensaje += "_Efectivo o transferencia_"; // Esta es la nueva leyenda
 
     // Envío al número de negocio: 3513018831
     window.open(`https://wa.me/5493513018831?text=${mensaje}`, '_blank');
