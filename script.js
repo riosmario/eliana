@@ -63,6 +63,19 @@ const baseDeDatos = {
             { nombre: "Set Jabonera y Toalla 07", precio: 3200, img: "img/rubros/bazar_escolar/set_jaboner_y_toalla_07.jpg" }
         ]
     },
+
+    "👗 TEXTIL": {
+    imagen: "img/rubros/textil.jpg", // Asegurate de tener una imagen de portada para este rubro
+    productos: [
+        { nombre: "Palazo de Dama", precio: 12000, img: "img/rubros/textil/palazo_dama.jpg" },
+        { nombre: "Conjunto Remera Algodón + Palazo", precio: 18500, img: "img/rubros/textil/remera_algodon_mas_palazo.jpg" },
+        { nombre: "Conjunto Niño Remera + Short", precio: 9500, img: "img/rubros/textil/remera_ninio_mas_short.jpg" },
+        { nombre: "Conjunto Niña Body + Babucha", precio: 8900, img: "img/rubros/textil/body_mas_babucha_ninia.jpg" },
+        { nombre: "Conjunto Niña Short + Remera", precio: 9200, img: "img/rubros/textil/short_mas_remera_ninia.jpg" },
+        { nombre: "Remera Hombre XXL", precio: 7500, img: "img/rubros/textil/remera_hombre_xxl.jpg" },
+        { nombre: "Short de Dama", precio: 6800, img: "img/rubros/textil/short_dama.jpg" }
+    ]
+},
 };
 
 let carrito = [];
@@ -235,12 +248,16 @@ if (btnWsp) {
 }
 
 // 6. IMÁGENES
-function agrandarImagen(src, nombre) {
-    const modal = document.getElementById("modal-imagen");
-    if (!modal) return;
-    document.getElementById("img-agrandada").src = src;
-    document.getElementById("caption-imagen").innerText = nombre;
-    modal.style.display = "flex";
+function agrandarImagen(src) {
+    // Buscamos el modal por su CLASE (la que tenés en el CSS)
+    const modal = document.querySelector('.modal-img');
+    // Buscamos la imagen por su CLASE
+    const imgContenido = document.querySelector('.modal-img-contenido');
+
+    if (modal && imgContenido) {
+        imgContenido.src = src; // Ponemos la foto (Palazo, Short, etc.)
+        modal.style.display = "flex"; // FLEX para que se active el centrado del CSS
+    }
 }
 
 function cerrarImagen() {

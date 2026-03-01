@@ -110,7 +110,7 @@ body { font-family: 'Segoe UI', sans-serif; margin: 0; background-color: #f4f4f4
     z-index: 3000; 
     left: 0; 
     top: 0; 
-    width: 100vw; 
+    width: 100vw;  
     height: 100vh; 
     background: rgba(0,0,0,0.8); 
     
@@ -145,27 +145,37 @@ body { font-family: 'Segoe UI', sans-serif; margin: 0; background-color: #f4f4f4
 }
 
 /* NUEVO: La imagen de zoom simplificada */
-.modal-img-contenido {
-    margin: auto;
-    display: block;
-    width: auto;
-    height: auto;
-    max-width: 90%; /* No se sale de los costados de la pantalla */
-    max-height: 85vh; /* Ocupa casi todo el alto, pero deja espacio */
-    object-fit: contain; /* Mantiene la proporción sin deformarse */
-    border-radius: 15px; /* Para que combine con tu estilo redondeado */
-    border: 5px solid white; /* Un marco blanco prolijo como en tu foto */
-    box-shadow: 0 0 20px rgba(0,0,0,0.5); /* Una pequeña sombra para que flote */
+/* --- MODAL DE IMAGEN (Zoom) --- */
+#modal-imagen {
+    display: none; 
+    position: fixed; 
+    z-index: 4000; 
+    left: 0; 
+    top: 0; 
+    width: 100vw; 
+    height: 100vh; 
+    background: rgba(0,0,0,0.9); 
+    
+    /* ESTO ES LO QUE CENTRA LA IMAGEN */
+    justify-content: center; 
+    align-items: center; 
 }
 
-/* El texto que aparece abajo de la foto (ej: "Ya empiezan las clases") */
+/* La imagen propiamente dicha */
+#img-agrandada {
+    margin: auto;
+    display: block;
+    max-width: 90%; 
+    max-height: 85vh; 
+    object-fit: contain; 
+    border-radius: 15px; 
+    border: 5px solid white; 
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+/* Ocultamos el texto amarillo definitivamente */
 #caption-imagen {
-    color: #e2f42a; /* El amarillo de tu logo */
-    font-weight: bold;
-    text-align: center;
-    padding: 15px;
-    width: 100%;
-    font-size: 1.2rem;
+    display: none !important;
 }
 
 /* --- FOOTER --- */
