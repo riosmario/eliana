@@ -28,7 +28,6 @@ const baseDeDatos = {
             { nombre: "Lápices Negros con Goma x12", precio: 2400, img: "img/rubros/escolar/lapices_negro_con_goma_x12.jpg" }
         ]
     },
-
     "🎒 MOCHILAS": {
         imagen: "img/rubros/mochila.jpg",
         productos: [
@@ -47,7 +46,6 @@ const baseDeDatos = {
             { nombre: "Mochila Jardín", precio: 12000, img: "img/rubros/mochilas/mochila_jardin.jpg" }
         ]
     },
-
     "🍽️ BAZAR ESCOLAR": {
         imagen: "img/rubros/bazar_escolar.jpg",
         productos: [
@@ -63,9 +61,8 @@ const baseDeDatos = {
             { nombre: "Set Jabonera y Toalla 07", precio: 3200, img: "img/rubros/bazar_escolar/set_jaboner_y_toalla_07.jpg" }
         ]
     },
-
     "👗 TEXTIL": {
-        imagen: "img/rubros/textil.jpg", // Asegurate de tener una imagen de portada para este rubro
+        imagen: "img/rubros/textil.jpg",
         productos: [
             { nombre: "Palazo de Dama", precio: 12000, img: "img/rubros/textil/palazo_dama.jpg" },
             { nombre: "Conjunto Remera Algodón + Palazo", precio: 18500, img: "img/rubros/textil/remera_algodon_mas_palazo.jpg" },
@@ -76,8 +73,7 @@ const baseDeDatos = {
             { nombre: "Short de Dama", precio: 6800, img: "img/rubros/textil/short_dama.jpg" }
         ]
     },
-
-        "🧸 PELUCHES": {
+    "🧸 PELUCHES": {
         imagen: "img/rubros/peluches.jpg", 
         productos: [
             { nombre: "Peluche Gatito con Dona", precio: 8500, img: "img/rubros/peluches/peluche_gatito_con_dona.jpg" },
@@ -89,7 +85,7 @@ const baseDeDatos = {
             { nombre: "Peluche Caracol", precio: 6500, img: "img/rubros/peluches/peluche_caracol.jpg" },
             { nombre: "Peluche Gatito con Disfraz", precio: 8900, img: "img/rubros/peluches/peluche_gatito_con_disfraz.jpg" }
         ]
-    },
+    }
 };
 
 let carrito = [];
@@ -134,7 +130,7 @@ function mostrarProductos(nombreRubro) {
         tarjeta.className = "tarjeta-horizontal";
 
         tarjeta.innerHTML = `
-            <img src="${p.img}" onclick="agrandarImagen('${p.img}', '${p.nombre}')">
+            <img src="${p.img}" onclick="agrandarImagen('${p.img}')">
             <h3>${p.nombre}</h3>
             <p class="precio">$${p.precio}</p>
             <button class="btn-add" onclick="agregarAlCarrito('${p.nombre}', ${p.precio}, event)">+</button>
@@ -146,38 +142,27 @@ function mostrarProductos(nombreRubro) {
 
 // 4. LÓGICA DEL CARRITO
 function agregarAlCarrito(nombre, precio, event) {
-    // 1. Lógica de carrito
     carrito.push({ nombre, precio });
-
-    // 2. Actualizar contador
     const contador = document.getElementById('cart-counter');
     if (contador) contador.innerText = carrito.length;
 
-    // 3. Crear el aviso
     const cartel = document.createElement("span");
     cartel.innerText = "¡Agregado!";
     cartel.className = "aviso-agregado";
 
-    // Lo metemos en el padre (la tarjeta) para que no falle
     const boton = event.currentTarget || event.target;
     const contenedorPadre = boton.parentElement;
-
-    // IMPORTANTE: Aseguramos que el padre sea el punto de referencia
     contenedorPadre.style.position = "relative";
-
     contenedorPadre.appendChild(cartel);
 
-    // 4. Limpieza
-    setTimeout(() => {
-        cartel.remove();
-    }, 1500);
+    setTimeout(() => { cartel.remove(); }, 1500);
 }
 
 function eliminarDelCarrito(index) {
     carrito.splice(index, 1);
     const contador = document.getElementById('cart-counter');
     if (contador) contador.innerText = carrito.length;
-    abrirModal(); // Refresca el modal para que desaparezca el item
+    abrirModal();
 }
 
 // 5. MODAL Y WHATSAPP
@@ -187,21 +172,17 @@ function abrirModal() {
     const totalTxt = document.getElementById('total-precio');
     const btnWsp = document.getElementById('btn-whatsapp');
 
-    // 1. Seguro de vida: si no encuentra los elementos, no hace nada
     if (!modal || !lista) return;
 
-    // 2. CORRECCIÓN CLAVE: Usamos "flex" para que el CSS lo centre perfectamente
     modal.style.display = "flex"; 
-    
     lista.innerHTML = '';
     let totalAcumulado = 0;
 
-    // 3. Lógica para mostrar los productos o el mensaje de vacío
     if (carrito.length === 0) {
         lista.innerHTML = '<p style="text-align:center; padding: 20px;">Tu carrito está vacío 🛒</p>';
         if (btnWsp) {
             btnWsp.style.opacity = "0.5"; 
-            btnWsp.style.pointerEvents = "none"; // Evita que hagan clic si está vacío
+            btnWsp.style.pointerEvents = "none";
         }
     } else {
         if (btnWsp) {
@@ -209,7 +190,6 @@ function abrirModal() {
             btnWsp.style.pointerEvents = "auto";
         }
         
-        // 4. Dibujamos cada artículo (Fibrón, Diccionario, etc.)
         carrito.forEach((item, index) => {
             totalAcumulado += item.precio;
             lista.innerHTML += `
@@ -224,7 +204,6 @@ function abrirModal() {
         });
     }
 
-    // 5. Actualizamos el total acumulado
     if (totalTxt) totalTxt.innerText = `$${totalAcumulado}`;
 }
 
@@ -233,44 +212,58 @@ function cerrarModal() {
     if (modal) modal.style.display = "none";
 }
 
-// Evento para enviar a WhatsApp
-const btnWsp = document.getElementById('btn-whatsapp');
-if (btnWsp) {
-    btnWsp.onclick = function () {
-        if (carrito.length === 0) return alert("El carrito está vacío");
+// NUEVA FUNCIÓN MEJORADA DE WHATSAPP
+function enviarWhatsApp() {
+    const nombre = document.getElementById('nombre-cliente').value;
+    const direccion = document.getElementById('direccion-cliente').value;
+    
+    // Validación de datos
+    if (!nombre) {
+        alert("Por favor, ingresá tu nombre para procesar el pedido.");
+        return;
+    }
 
-        let mensaje = "Hola! Mi pedido es:%0A%0A";
-        let total = 0;
-        carrito.forEach(item => {
-            mensaje += `• ${item.nombre} ($${item.precio})%0A`;
-            total += item.precio;
-        });
-        mensaje += `%0A*Total: $${total}*`;
+    if (carrito.length === 0) {
+        alert("El carrito está vacío");
+        return;
+    }
 
-        // Tu número: 3513018831
-        window.open(`https://wa.me/5493513018831?text=${mensaje}`, '_blank');
+    // Armado del mensaje profesional
+    let mensaje = "¡Hola El Cielito de Eliana! 👋%0A%0A";
+    mensaje += `*Pedido de:* ${nombre}%0A`;
+    if (direccion) mensaje += `*Dirección:* ${direccion}%0A`;
+    mensaje += "--------------------------%0A";
 
-        // --- REINICIO TOTAL ---
-        carrito = []; // Vacía el array interno
-        
-        // Actualiza el contador visual en el botón del header
-        const contador = document.getElementById('cart-counter');
-        if (contador) contador.innerText = "0"; 
+    let total = 0;
+    carrito.forEach(item => {
+        mensaje += `• ${item.nombre} ($${item.precio})%0A`;
+        total += item.precio;
+    });
 
-        cerrarModal(); // Cierra la ventana
-    };
+    mensaje += "--------------------------%0A";
+    mensaje += `*Total: $${total}*`;
+
+    // Envío al número de negocio: 3513018831
+    window.open(`https://wa.me/5493513018831?text=${mensaje}`, '_blank');
+
+    // Reinicio de carrito y campos
+    carrito = [];
+    const contador = document.getElementById('cart-counter');
+    if (contador) contador.innerText = "0"; 
+    document.getElementById('nombre-cliente').value = "";
+    document.getElementById('direccion-cliente').value = "";
+
+    cerrarModal();
 }
 
-// 6. IMÁGENES
+// 6. IMÁGENES (Corregido con IDs)
 function agrandarImagen(src) {
-    // Buscamos el modal por su CLASE (la que tenés en el CSS)
-    const modal = document.querySelector('.modal-img');
-    // Buscamos la imagen por su CLASE
-    const imgContenido = document.querySelector('.modal-img-contenido');
+    const modal = document.getElementById("modal-imagen");
+    const imgContenido = document.getElementById("img-agrandada");
 
     if (modal && imgContenido) {
-        imgContenido.src = src; // Ponemos la foto (Palazo, Short, etc.)
-        modal.style.display = "flex"; // FLEX para que se active el centrado del CSS
+        imgContenido.src = src; 
+        modal.style.display = "flex"; 
     }
 }
 
@@ -281,30 +274,27 @@ function cerrarImagen() {
 
 // 7. FUNCIÓN DE BÚSQUEDA
 function buscarProductos() {
-    const input = document.getElementById('buscador'); // Tiene que decir 'buscador'
+    const input = document.getElementById('buscador');
     const filtro = input.value.toLowerCase();
     const contenedor = document.getElementById("productos-grid");
     const btnVolver = document.getElementById("btn-volver");
 
-    // Si el buscador está vacío, volvemos a mostrar los rubros
     if (filtro === "") {
         mostrarRubros();
         return;
     }
 
-    // Limpiamos la pantalla
     contenedor.innerHTML = "";
     contenedor.className = "lista-productos-detalle";
     if (btnVolver) btnVolver.style.display = "block";
 
-    // Recorremos la base de datos buscando coincidencias
     Object.keys(baseDeDatos).forEach(categoria => {
         baseDeDatos[categoria].productos.forEach(p => {
             if (p.nombre.toLowerCase().includes(filtro)) {
                 const tarjeta = document.createElement("div");
                 tarjeta.className = "tarjeta-horizontal";
                 tarjeta.innerHTML = `
-                    <img src="${p.img}" onclick="agrandarImagen('${p.img}', '${p.nombre}')">
+                    <img src="${p.img}" onclick="agrandarImagen('${p.img}')">
                     <h3>${p.nombre}</h3>
                     <p class="precio">$${p.precio}</p>
                     <button class="btn-add" onclick="agregarAlCarrito('${p.nombre}', ${p.precio}, event)">+</button>
@@ -314,7 +304,6 @@ function buscarProductos() {
         });
     });
 
-    // Si no encuentra nada
     if (contenedor.innerHTML === "") {
         contenedor.innerHTML = `<p style="text-align:center; padding:20px;">No encontramos "${filtro}"... 🔍</p>`;
     }
