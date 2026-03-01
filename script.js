@@ -143,8 +143,12 @@ function mostrarProductos(nombreRubro) {
 // 4. LÓGICA DEL CARRITO
 function agregarAlCarrito(nombre, precio, event) {
     carrito.push({ nombre, precio });
+    
+    // Actualizamos el contador con la nueva leyenda
     const contador = document.getElementById('cart-counter');
-    if (contador) contador.innerText = carrito.length;
+    if (contador) {
+        contador.innerText = `${carrito.length} productos agregados`;
+    }
 
     const cartel = document.createElement("span");
     cartel.innerText = "¡Agregado!";
@@ -160,8 +164,12 @@ function agregarAlCarrito(nombre, precio, event) {
 
 function eliminarDelCarrito(index) {
     carrito.splice(index, 1);
+    
+    // También actualizamos la leyenda al eliminar
     const contador = document.getElementById('cart-counter');
-    if (contador) contador.innerText = carrito.length;
+    if (contador) {
+        contador.innerText = `${carrito.length} productos agregados`;
+    }
     abrirModal();
 }
 
@@ -205,6 +213,33 @@ function abrirModal() {
     }
 
     if (totalTxt) totalTxt.innerText = `$${totalAcumulado}`;
+}
+
+// Nueva función unificada para enviar a WhatsApp con el formato de imagen
+function enviarWhatsApp() {
+    const nombreCliente = document.getElementById('nombre-cliente').value;
+    const direccionCliente = document.getElementById('direccion-cliente').value;
+    const total = document.getElementById('total-precio').innerText;
+
+    if (!nombreCliente) {
+        alert("Por favor, ingresa tu nombre para el pedido.");
+        return;
+    }
+
+    let mensaje = `*Pedido de:* ${nombreCliente}%0A`;
+    if (direccionCliente) mensaje += `*Dirección:* ${direccionCliente}%0A`;
+    mensaje += "--------------------------%0A";
+
+    carrito.forEach(item => {
+        mensaje += `• ${item.nombre} ($${item.precio})%0A`;
+    });
+
+    mensaje += "--------------------------%0A";
+    mensaje += `*Total: ${total}*%0A%0A`; // Doble salto para la leyenda
+    mensaje += "(Este precio es en Efectivo o transferencia)";
+
+    // Número de tu negocio: 3513018831
+    window.open(`https://wa.me/5493513018831?text=${mensaje}`, '_blank');
 }
 
 function cerrarModal() {
