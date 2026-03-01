@@ -102,6 +102,23 @@ body { font-family: 'Segoe UI', sans-serif; margin: 0; background-color: #f4f4f4
 
 /* --- MODALES --- */
 /* --- MODALES (Inspirado en tu referencia) --- */
+
+.modal { 
+    display: none; 
+    position: fixed; 
+    z-index: 3000; 
+    left: 0; 
+    top: 0; 
+    width: 100vw; 
+    height: 100vh; 
+    background: rgba(0,0,0,0.8); 
+    
+    /* ESTO ES LO QUE FALTA PARA CENTRAR */
+    display: flex;            /* Activa el modo flexible */
+    justify-content: center;  /* Centra horizontalmente */
+    align-items: center;      /* Centra verticalmente */
+}
+
 .modal-img {
     display: none; 
     position: fixed; 
@@ -116,6 +133,7 @@ body { font-family: 'Segoe UI', sans-serif; margin: 0; background-color: #f4f4f4
 }
 
 /* El contenido del carrito */
+/* Este es el recuadro blanco del carrito */
 .modal-content { 
     background: white; 
     padding: 20px; 
@@ -123,6 +141,7 @@ body { font-family: 'Segoe UI', sans-serif; margin: 0; background-color: #f4f4f4
     width: 90%; 
     max-width: 400px; 
     position: relative; 
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3); /* Un toque de sombra para que resalte */
 }
 
 /* NUEVO: La imagen de zoom simplificada */
