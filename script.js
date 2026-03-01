@@ -65,17 +65,31 @@ const baseDeDatos = {
     },
 
     "👗 TEXTIL": {
-    imagen: "img/rubros/textil.jpg", // Asegurate de tener una imagen de portada para este rubro
-    productos: [
-        { nombre: "Palazo de Dama", precio: 12000, img: "img/rubros/textil/palazo_dama.jpg" },
-        { nombre: "Conjunto Remera Algodón + Palazo", precio: 18500, img: "img/rubros/textil/remera_algodon_mas_palazo.jpg" },
-        { nombre: "Conjunto Niño Remera + Short", precio: 9500, img: "img/rubros/textil/remera_ninio_mas_short.jpg" },
-        { nombre: "Conjunto Niña Body + Babucha", precio: 8900, img: "img/rubros/textil/body_mas_babucha_ninia.jpg" },
-        { nombre: "Conjunto Niña Short + Remera", precio: 9200, img: "img/rubros/textil/short_mas_remera_ninia.jpg" },
-        { nombre: "Remera Hombre XXL", precio: 7500, img: "img/rubros/textil/remera_hombre_xxl.jpg" },
-        { nombre: "Short de Dama", precio: 6800, img: "img/rubros/textil/short_dama.jpg" }
-    ]
-},
+        imagen: "img/rubros/textil.jpg", // Asegurate de tener una imagen de portada para este rubro
+        productos: [
+            { nombre: "Palazo de Dama", precio: 12000, img: "img/rubros/textil/palazo_dama.jpg" },
+            { nombre: "Conjunto Remera Algodón + Palazo", precio: 18500, img: "img/rubros/textil/remera_algodon_mas_palazo.jpg" },
+            { nombre: "Conjunto Niño Remera + Short", precio: 9500, img: "img/rubros/textil/remera_ninio_mas_short.jpg" },
+            { nombre: "Conjunto Niña Body + Babucha", precio: 8900, img: "img/rubros/textil/body_mas_babucha_ninia.jpg" },
+            { nombre: "Conjunto Niña Short + Remera", precio: 9200, img: "img/rubros/textil/short_mas_remera_ninia.jpg" },
+            { nombre: "Remera Hombre XXL", precio: 7500, img: "img/rubros/textil/remera_hombre_xxl.jpg" },
+            { nombre: "Short de Dama", precio: 6800, img: "img/rubros/textil/short_dama.jpg" }
+        ]
+    },
+
+        "🧸 PELUCHES": {
+        imagen: "img/rubros/peluches.jpg", 
+        productos: [
+            { nombre: "Peluche Gatito con Dona", precio: 8500, img: "img/rubros/peluches/peluche_gatito_con_dona.jpg" },
+            { nombre: "Peluche Oso Corazón", precio: 9200, img: "img/rubros/peluches/peluche_oso_corazon.jpg" },
+            { nombre: "Peluche Gatito Refresco", precio: 8500, img: "img/rubros/peluches/peluche_gatito_refresco.jpg" },
+            { nombre: "Peluche Almohada Smoochy", precio: 12000, img: "img/rubros/peluches/peluche_almohada_smoochy.jpg" },
+            { nombre: "Peluche Osita", precio: 7800, img: "img/rubros/peluches/peluche_osita.jpg" },
+            { nombre: "Peluche Almohadón", precio: 10500, img: "img/rubros/peluches/peluche_almohadon.jpg" },
+            { nombre: "Peluche Caracol", precio: 6500, img: "img/rubros/peluches/peluche_caracol.jpg" },
+            { nombre: "Peluche Gatito con Disfraz", precio: 8900, img: "img/rubros/peluches/peluche_gatito_con_disfraz.jpg" }
+        ]
+    },
 };
 
 let carrito = [];
