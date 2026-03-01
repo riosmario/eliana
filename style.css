@@ -103,8 +103,9 @@ body { font-family: 'Segoe UI', sans-serif; margin: 0; background-color: #f4f4f4
 /* --- MODALES --- */
 /* --- MODALES (Inspirado en tu referencia) --- */
 
+/* --- MODALES --- */
 .modal { 
-    display: none; 
+    display: none;            /* <--- ESTO LO MANTIENE OCULTO AL EMPEZAR */
     position: fixed; 
     z-index: 3000; 
     left: 0; 
@@ -113,10 +114,9 @@ body { font-family: 'Segoe UI', sans-serif; margin: 0; background-color: #f4f4f4
     height: 100vh; 
     background: rgba(0,0,0,0.8); 
     
-    /* ESTO ES LO QUE FALTA PARA CENTRAR */
-    display: flex;            /* Activa el modo flexible */
-    justify-content: center;  /* Centra horizontalmente */
-    align-items: center;      /* Centra verticalmente */
+    /* Preparamos el centrado */
+    justify-content: center;  
+    align-items: center;      
 }
 
 .modal-img {

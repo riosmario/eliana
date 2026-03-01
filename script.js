@@ -158,19 +158,31 @@ function abrirModal() {
     const modal = document.getElementById('modal-carrito');
     const lista = document.getElementById('lista-carrito');
     const totalTxt = document.getElementById('total-precio');
-    const btnWsp = document.getElementById('btn-whatsapp'); // Traemos el botón
+    const btnWsp = document.getElementById('btn-whatsapp');
 
+    // 1. Seguro de vida: si no encuentra los elementos, no hace nada
     if (!modal || !lista) return;
 
-    modal.style.display = "flex";
+    // 2. CORRECCIÓN CLAVE: Usamos "flex" para que el CSS lo centre perfectamente
+    modal.style.display = "flex"; 
+    
     lista.innerHTML = '';
     let totalAcumulado = 0;
 
+    // 3. Lógica para mostrar los productos o el mensaje de vacío
     if (carrito.length === 0) {
         lista.innerHTML = '<p style="text-align:center; padding: 20px;">Tu carrito está vacío 🛒</p>';
-        if (btnWsp) btnWsp.style.opacity = "0.5"; // Lo ponemos clarito si no hay nada
+        if (btnWsp) {
+            btnWsp.style.opacity = "0.5"; 
+            btnWsp.style.pointerEvents = "none"; // Evita que hagan clic si está vacío
+        }
     } else {
-        if (btnWsp) btnWsp.style.opacity = "1";
+        if (btnWsp) {
+            btnWsp.style.opacity = "1";
+            btnWsp.style.pointerEvents = "auto";
+        }
+        
+        // 4. Dibujamos cada artículo (Fibrón, Diccionario, etc.)
         carrito.forEach((item, index) => {
             totalAcumulado += item.precio;
             lista.innerHTML += `
@@ -185,6 +197,7 @@ function abrirModal() {
         });
     }
 
+    // 5. Actualizamos el total acumulado
     if (totalTxt) totalTxt.innerText = `$${totalAcumulado}`;
 }
 
