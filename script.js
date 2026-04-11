@@ -305,9 +305,16 @@ function agrandarImagen(src) {
     }
 }
 
-function cerrarImagen() {
-    const modal = document.getElementById("modal-imagen");
-    if (modal) modal.style.display = "none";
+// Actualizamos la función de cerrar para manejar el clic
+function cerrarImagen(event) {
+    // Obtenemos el ID del elemento donde se hizo clic
+    const elementoClickeado = event.target.id;
+    
+    // Solo cerramos si se hizo clic en el fondo (modal-imagen) o en la 'X' (close-img-btn)
+    // Usamos event.target.className para la X porque es un span
+    if (elementoClickeado === 'modal-imagen' || event.target.className === 'close-img-btn') {
+        document.getElementById("modal-imagen").style.display = "none";
+    }
 }
 
 // 7. FUNCIÓN DE BÚSQUEDA

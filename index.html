@@ -56,8 +56,9 @@
         </div>
     </div>
 
-    <div id="modal-imagen" class="modal-img" onclick="cerrarImagen()">
-        <span class="close-img">&times;</span>
+    <div id="modal-imagen" class="modal-img" onclick="cerrarImagen(event)">
+        <span class="close-img-btn" onclick="cerrarImagen(event)">&times;</span>
+
         <img id="img-agrandada" class="modal-img-contenido">
         <div id="caption-imagen"></div>
     </div>
