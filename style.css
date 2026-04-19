@@ -305,3 +305,49 @@ body { font-family: 'Segoe UI', sans-serif; margin: 0; background-color: #f4f4f4
     margin-left: 10px;
     color: #666;
 }
+
+/* --- SUB-MENÚ DE FILTROS (NUEVO) --- */
+.sub-rubros {
+    display: none; /* Se activa por JavaScript solo cuando entras a TEXTIL */
+    justify-content: center;
+    flex-wrap: wrap; /* Para que en celulares se acomoden en varias filas si es necesario */
+    gap: 12px;
+    padding: 20px 10px;
+    background-color: #ffffff; /* Cambiado a BLANCO para que resalte sobre el fondo gris de la tienda */
+    border-bottom: 2px solid #a532b2; /* Una línea violeta para separar de los productos */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.btn-sub {
+    background-color: #e2f42a; /* Tu amarillo neón característico */
+    color: #a532b2;            /* Texto púrpura para que combine con el header */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;       /* Forma ovalada como el botón VOLVER */
+    font-weight: bold;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Sombra suave para que parezcan botones reales */
+    transition: all 0.2s ease;
+}
+
+/* Efecto al tocar el botón o pasar el mouse */
+.btn-sub:hover, .btn-sub:active {
+    background-color: #a532b2; /* Se invierten los colores al tocar */
+    color: #e2f42a;
+    transform: scale(1.05); /* Se agranda un poquito al presionar */
+}
+
+/* Ajuste para pantallas de celular muy chicas */
+@media (max-width: 480px) {
+    .sub-rubros {
+        padding: 15px 5px;
+        gap: 8px;
+    }
+    .btn-sub {
+        padding: 8px 12px;
+        font-size: 0.75rem;
+    }
+}

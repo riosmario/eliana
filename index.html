@@ -27,7 +27,14 @@
             <input type="text" id="buscador" placeholder="¿Qué estás buscando?" onkeyup="buscarProductos()">
         </div>
     </header>
-    <span></span>
+
+    <div id="filtros-textil" class="sub-rubros" style="display: none;">
+        <button class="btn-sub" onclick="filtrarPorSub('Hombre')">Hombre</button>
+        <button class="btn-sub" onclick="filtrarPorSub('Mujer')">Mujer</button>
+        <button class="btn-sub" onclick="filtrarPorSub('Niños')">Niños</button>
+        <button class="btn-sub" onclick="mostrarProductos('👗 TEXTIL')">Todos</button>
+    </div>
+
     <main class="container">
         <section id="productos-grid" class="grid-container"></section>
     </main>
@@ -75,6 +82,7 @@
         </div>
     </footer>
 
+    <script src="productos.js"></script>
     <script src="script.js"></script>
 </body>
 
