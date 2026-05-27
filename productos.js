@@ -1,7 +1,6 @@
-// 1. BASE DE DATOS UNIFICADA
 const baseDeDatos = {
     "✏️ ARTICULOS ESCOLARES": {
-        imagen: "img/rubros/libreria.png",
+        imagen: "img/rubros/_rubros_titulos/libreria.png",
         productos: [
             { nombre: "Fibrón Ositos", precio: 1200, img: "img/rubros/escolar/fibron_ositos.jpg" },
             { nombre: "Fibrones Ezco x12", precio: 4500, img: "img/rubros/escolar/fibrones_ezco_x12.jpg" },
@@ -28,8 +27,9 @@ const baseDeDatos = {
             { nombre: "Lápices Negros con Goma x12", precio: 2400, img: "img/rubros/escolar/lapices_negro_con_goma_x12.jpg" }
         ]
     },
+    
     "🎒 MOCHILAS": {
-        imagen: "img/rubros/mochila.jpg",
+        imagen: "img/rubros/_rubros_titulos/mochila.jpg",
         productos: [
             { nombre: "Cool Girl", precio: 16900, img: "img/rubros/mochilas/cool_girld.jpg" },
             { nombre: "Dream", precio: 24900, img: "img/rubros/mochilas/dream.jpg" },
@@ -46,8 +46,9 @@ const baseDeDatos = {
             { nombre: "Mochila Jardín", precio: 12000, img: "img/rubros/mochilas/mochila_jardin.jpg" }
         ]
     },
+
     "🍽️ BAZAR ESCOLAR": {
-        imagen: "img/rubros/bazar_escolar.jpg",
+        imagen: "img/rubros/_rubros_titulos/bazar_escolar.jpg",
         productos: [
             { nombre: "Botella Deportiva multicolor", precio: 4500, img: "img/rubros/bazar_escolar/botella_deportiva_multicolor.jpg" },
             { nombre: "Botella de personaje", precio: 4500, img: "img/rubros/bazar_escolar/botella_deportiva_personajes.jpg" },
@@ -61,27 +62,63 @@ const baseDeDatos = {
             { nombre: "Set Jabonera y Toalla 07", precio: 3200, img: "img/rubros/bazar_escolar/set_jaboner_y_toalla_07.jpg" }
         ]
     },
+
     "👗 TEXTIL": {
-        imagen: "img/rubros/textil.jpg",
+        imagen: "img/rubros/_rubros_titulos/textil.jpg",
         productos: [
-            { nombre: "Palazo de Dama", precio: 12000, sub: "Mujer", img: "img/rubros/textil/palazo_dama.jpg" },
-            { nombre: "Conjunto Remera Algodón + Palazo", precio: 18500, sub: "Mujer", img: "img/rubros/textil/remera_algodon_mas_palazo.jpg" },
-            { nombre: "Conjunto Niño Remera + Short", precio: 9500, sub: "Niños", img: "img/rubros/textil/remera_ninio_mas_short.jpg" },
-            { nombre: "Conjunto Niña Body + Babucha", precio: 8900, sub: "Niños", img: "img/rubros/textil/body_mas_babucha_ninia.jpg" },
-            { nombre: "Conjunto Niña Short + Remera", precio: 9200, sub: "Niños", img: "img/rubros/textil/short_mas_remera_ninia.jpg" },
-            { nombre: "Remera Hombre XXL", precio: 7500, sub: "Hombre", img: "img/rubros/textil/remera_hombre_xxl.jpg" },
-            { nombre: "Short de Dama", precio: 6800, sub: "Mujer", img: "img/rubros/textil/short_dama.jpg" }
+            { nombre: "Bombacha de Dama Cola Less Lisa Especial Algodón", precio: 0, sub: "Mujer", img: "img/rubros/textil/mujer/MUJER_BOM,BACHA DE DAMA COLA LESS LISA ESPECIAL ALGODON.jpg" },
+            { nombre: "Bombacha Cola Less Atigrada", precio: 0, sub: "Mujer", img: "img/rubros/textil/mujer/MUJER_BOMBACHA COLA LESS ATIGRADA.jpg" },
+            { nombre: "Bombacha de Dama Cola Less Talle Especial Atigrada", precio: 0, sub: "Mujer", img: "img/rubros/textil/mujer/MUJER_BOMBACHA DE DAMA COLA LESS TALLE ESPECIAL ATIGRADA.jpg" },
+            { nombre: "Buzo Darlon de Dama Talle 6", precio: 0, sub: "Mujer", img: "img/rubros/textil/mujer/MUJER_BUZO DARLON DE DAMA TALLE 6.jpg" },
+            { nombre: "Buzo Micro Polar Dama", precio: 0, sub: "Mujer", img: "img/rubros/textil/mujer/MUJER_BUZO MICRO POLAR DAMA .jpg" },
+            { nombre: "Campera Frizada de Dama Talles 1 2 y 3", precio: 0, sub: "Mujer", img: "img/rubros/textil/mujer/MUJER_CAMPERA FRIZADA DE DAMA TALLES 1 2 Y 3.jpg" },
+            { nombre: "Campera Frizada de Mujer con Rayas en Mangas", precio: 0, sub: "Mujer", img: "img/rubros/textil/mujer/MUJER_CAMPERA FRIZADA DE MUJER CON RAYAS EN MANGAS.jpg" },
+            { nombre: "Campera Frizada Oversize Dama Negra", precio: 0, sub: "Mujer", img: "img/rubros/textil/mujer/MUJER_CAMPERA FRIZADA OVERSIZE DAMA NEGRA.jpg" },
+            { nombre: "Campera Frizada Oversize de Dama", precio: 0, sub: "Mujer", img: "img/rubros/textil/mujer/MUJER_CAMPERA FRIZADA OVERSIZE DE DAMA.jpg" },
+            { nombre: "Campera Oversize Frizada Dama Negra", precio: 0, sub: "Mujer", img: "img/rubros/textil/mujer/MUJER_CAMPERA OVERSIZE FRIZADA DAMA NEGRA.jpg" },
+            { nombre: "Campera Oversize Frizada Dama Verde Oliva", precio: 0, sub: "Mujer", img: "img/rubros/textil/mujer/MUJER_CAMPERA OVERSIZE FRIZADA DAMA VERDE OLIVA.jpg" },
+            { nombre: "Corpiño Deportivo Talles Especiales", precio: 0, sub: "Mujer", img: "img/rubros/textil/mujer/MUJER_CORPIÑO DEPORTIVO TALLES ESPECIALES.jpg" },
+            { nombre: "Media Polera Morley de Algodón Talle S M L XL Celeste", precio: 0, sub: "Mujer", img: "img/rubros/textil/mujer/MUJER_MEDIA POLERA MORLEY DE ALGODON TALLE S M L XL CELESTE.jpg" },
+            { nombre: "Media Polera Morley y Algodón Colores", precio: 0, sub: "Mujer", img: "img/rubros/textil/mujer/MUJER_MEDIA POLERA MORLEY Y ALGONDON COLORES.jpg" },
+            { nombre: "Medias de Algodón Floyd", precio: 0, sub: "Mujer", img: "img/rubros/textil/mujer/MUJER_MEDIAS DE ALGODON FLOYD.jpg" },
+            { nombre: "Medias de Dama 100% Algodón", precio: 0, sub: "Mujer", img: "img/rubros/textil/mujer/MUJER_MEDIAS DE DAMA 100% ALGODON.jpg" },
+            { nombre: "Medias Pantaloneras", precio: 0, sub: "Mujer", img: "img/rubros/textil/mujer/MUJER_MEDIAS PANTALONERAS .jpg" },
+            { nombre: "Palazo de Dama Morley de Lanilla Talle 7 Marrón", precio: 0, sub: "Mujer", img: "img/rubros/textil/mujer/MUJER_PALAZO DE DAMA MORLEY DE LANILLA TALLE 7 MARRON.jpg" },
+            { nombre: "Palazo 000", precio: 0, sub: "Mujer", img: "img/rubros/textil/mujer/MUJER_PALAZO_000.jpg" },
+            { nombre: "Palazo 001", precio: 0, sub: "Mujer", img: "img/rubros/textil/mujer/MUJER_PALAZO_001.jpg" },
+            { nombre: "Pantalón Darlon Dama Talles 4 5 6", precio: 0, sub: "Mujer", img: "img/rubros/textil/mujer/MUJER_PANTALON DARLOM DAMA TALLES 4 5 6.jpg" },
+            { nombre: "Pantalón Darlon Dama con Bolsillo Talle 7 Azul", precio: 0, sub: "Mujer", img: "img/rubros/textil/mujer/MUJER_PANTALON DARLON DAMA CON BOLSILLO TALLE 7 AZUL.jpg" },
+            { nombre: "Pantalón Darlon Dama con Bolsillo Talle 8 Marrón", precio: 0, sub: "Mujer", img: "img/rubros/textil/mujer/MUJER_PANTALON DARLON DAMA CON BOLSILLO TALLE 8 MARRON.jpg" },
+            { nombre: "Pantalón de Dama de Plush Talle 4", precio: 0, sub: "Mujer", img: "img/rubros/textil/mujer/MUJER_PANTALON DE DAMA DE PLUSH TALLE 4.jpg" },
+            { nombre: "Pantalón de Dama Lanilla de Morley Tiro Alto Talle 3 con Botones Marrón", precio: 0, sub: "Mujer", img: "img/rubros/textil/mujer/MUJER_PANTALON DE DAMA LANILLA DE MORLEY TIRO ALTO TALLE 3 CON BOTONES MARRON.jpg" },
+            { nombre: "Pantalón de Dama Lanilla de Morley Tiro Alto Talle 3 con Botones Negro", precio: 0, sub: "Mujer", img: "img/rubros/textil/mujer/MUJER_PANTALON DE DAMA LANILLA DE MORLEY TIRO ALTO TALLE 3 CON BOTONES NEGRO.jpg" },
+            { nombre: "Pantalón de Dama Lanilla de Morley Tiro Alto Talle 3 Negro", precio: 0, sub: "Mujer", img: "img/rubros/textil/mujer/MUJER_PANTALON DE DAMA LANILLA DE MORLEY TIRO ALTO TALLE 3 NEGRO.jpg" },
+            { nombre: "Pantalón de Dama Lanilla de Morley Tiro Alto Talle 5 Marrón", precio: 0, sub: "Mujer", img: "img/rubros/textil/mujer/MUJER_PANTALON DE DAMA LANILLA DE MORLEY TIRO ALTO TALLE 5 MARRON.jpg" },
+            { nombre: "Pantalón de Dama Lanilla de Morley Tiro Alto Talle 6 Azul", precio: 0, sub: "Mujer", img: "img/rubros/textil/mujer/MUJER_PANTALON DE DAMA LANILLA DE MORLEY TIRO ALTO TALLE 6 AZUL.jpg" },
+            { nombre: "Pantalón Palazo Frizado Dama Talle 5", precio: 0, sub: "Mujer", img: "img/rubros/textil/mujer/MUJER_PANTALON PALAZO FRIZADO DAMA TALLE 5.jpg" },
+            { nombre: "Pantalón Palazo Frizado Dama", precio: 0, sub: "Mujer", img: "img/rubros/textil/mujer/MUJER_PANTALON PALAZO FRIZADO DAMA.jpg" },
+            { nombre: "Pantalón Sastrero de Dama Talle 7", precio: 0, sub: "Mujer", img: "img/rubros/textil/mujer/MUJER_PANTALON SASTRERO DE DAMA TALLE 7.jpg" },
+            { nombre: "Polera Morley Lanilla S M L XL", precio: 0, sub: "Mujer", img: "img/rubros/textil/mujer/MUJER_POLERA MORLEY LANILLA S M L XL .jpg" },
+            { nombre: "Polera Morley Lanilla S M L XL Colores", precio: 0, sub: "Mujer", img: "img/rubros/textil/mujer/MUJER_POLERA MORLEY LANILLA S M L XL COLORES.jpg" },
+            { nombre: "Polera Morley Lanilla Talle S M L XL Beige", precio: 0, sub: "Mujer", img: "img/rubros/textil/mujer/MUJER_POLERA MORLEY LANILLA TALLE S M L XL BEIGE.jpg" },
+            { nombre: "Polera Morley Lanilla Talle S M L XL Gris", precio: 0, sub: "Mujer", img: "img/rubros/textil/mujer/MUJER_POLERA MORLEY LANILLA TALLE S M L XL GRIS.jpg" },
+            { nombre: "Polera Morley Lanilla Talle S M L XL Marrón", precio: 0, sub: "Mujer", img: "img/rubros/textil/mujer/MUJER_POLERA MORLEY LANILLA TALLE S M L XL MARRON.jpg" },
+            { nombre: "Polera Morley Lanilla Talle S M L XL Negro", precio: 0, sub: "Mujer", img: "img/rubros/textil/mujer/MUJER_POLERA MORLEY LANILLA TALLE S M L XL NEGRO.jpg" },
+            { nombre: "Remera Manga Larga de Modal Talle 6", precio: 0, sub: "Mujer", img: "img/rubros/textil/mujer/MUJER_REMERA MANGA LARGA DE MODAL TALLE 6.jpg" },
+            { nombre: "Remera Manga Larga Microplar de Mujer", precio: 0, sub: "Mujer", img: "img/rubros/textil/mujer/MUJER_REMERA MANGA LARGA MICROPLAR DE MUJER.jpg" },
+            { nombre: "Remera Manga Larga Talles S M L XL (1)", precio: 0, sub: "Mujer", img: "img/rubros/textil/mujer/MUJER_REMERA MANGA LARGA TALLES S M L XL (1).jpg" }
         ]
     },
+
     "🧸 PELUCHES": {
-        imagen: "img/rubros/peluches.jpg",
+        imagen: "img/rubros/_rubros_titulos/peluches.jpg",
         productos: [
             { nombre: "Peluche Gatito con Dona", precio: 8500, img: "img/rubros/peluches/peluche_gatito_con_dona.jpg" },
             { nombre: "Peluche Oso Corazón", precio: 9200, img: "img/rubros/peluches/peluche_oso_corazon.jpg" },
             { nombre: "Peluche Gatito Refresco", precio: 8500, img: "img/rubros/peluches/peluche_gatito_refresco.jpg" },
             { nombre: "Peluche Almohada Smoochy", precio: 12000, img: "img/rubros/peluches/peluche_almohada_smoochy.jpg" },
             { nombre: "Peluche Osita", precio: 7800, img: "img/rubros/peluches/peluche_osita.jpg" },
-            { nombre: "Peluche Almohadón", precio: 10500, img: "img/rubros/peluches/peluche_almohadon.jpg" },
+            { nombre: "Peluche Almohadon", precio: 10500, img: "img/rubros/peluches/peluche_almohadon.jpg" },
             { nombre: "Peluche Caracol", precio: 6500, img: "img/rubros/peluches/peluche_caracol.jpg" },
             { nombre: "Peluche Gatito con Disfraz", precio: 8900, img: "img/rubros/peluches/peluche_gatito_con_disfraz.jpg" }
         ]
