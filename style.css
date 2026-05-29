@@ -107,7 +107,8 @@ body { font-family: 'Segoe UI', sans-serif; margin: 0; background-color: #f4f4f4
 
 /* 2. Ajustamos los textos para quitar márgenes que sobran */
 .tarjeta-horizontal h3 {
-   margin-left: 0px;
+    font-size: 14px;
+    margin-left: 0px;
     margin-right: 0px;
     margin-top: 10px;
     margin-bottom: 0px;
