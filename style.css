@@ -22,6 +22,7 @@ body { font-family: 'Segoe UI', sans-serif; margin: 0; background-color: #f4f4f4
     gap: 10px;
 }
 
+
 #main-title { 
     color: #e2f42a; 
     margin: 0; 
@@ -80,16 +81,51 @@ body { font-family: 'Segoe UI', sans-serif; margin: 0; background-color: #f4f4f4
 }
 
 /* --- GRILLAS --- */
-.grid-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 15px; padding-top: 20px; }
+/*.grid-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 15px; padding-top: 20px; }
 .lista-productos-detalle { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 15px; }
+*/
+
+/* --- GRILLAS --- */
+.grid-container { 
+    display: flex;             /* Cambiamos grid por flex para poder centrar */
+    justify-content: center;   /* ¡ESTO centra el botón en el medio de la pantalla! */
+    align-items: center; 
+    flex-wrap: wrap;           /* Si sumás Electrónica o Stickers, se acomodan al lado o abajo */
+    gap: 15px; 
+    padding-top: 20px; 
+}
+.lista-productos-detalle { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); 
+    gap: 15px; 
+}
 
 /* --- TARJETAS --- */
-.product-card-rubro, .tarjeta-horizontal { 
+/*.product-card-rubro, .tarjeta-horizontal { 
     background: white; border-radius: 12px; overflow: hidden; 
     box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: 0.3s;
 }
 .product-card-rubro:hover { transform: translateY(-5px); }
 .product-card-rubro img { width: 100%; height: 140px; object-fit: cover; }
+*/
+
+/* --- TARJETAS --- */
+/* Comparten el estilo base */
+.product-card-rubro, .tarjeta-horizontal { 
+    background: white; border-radius: 12px; overflow: hidden; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: 0.3s;
+}
+
+/* NUEVO: Le damos un ancho rectangular espectacular al botón del rubro */
+.product-card-rubro {
+    width: 100%;
+    max-width: 450px; /* <--- Subí o bajá este número si lo querés más o menos ancho */
+}
+
+.product-card-rubro:hover { transform: translateY(-5px); }
+.product-card-rubro img { width: 100%; height: 180px; object-fit: cover; } /* Subimos un poquito la altura para acompañar el ancho */
+
+
 .overlay-rubro { 
     background: rgba(0,0,0,0.5); color: white; padding: 10px; 
     text-align: center; font-weight: bold; 
