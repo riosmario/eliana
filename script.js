@@ -14,7 +14,7 @@ function mostrarRubros() {
 
     contenedor.innerHTML = "";
     contenedor.className = "grid-container";
-    if (tituloPrincipal) tituloPrincipal.innerHTML = "EL CIELITO <br> <span>DE ELIANA</span>";
+    if (tituloPrincipal) tituloPrincipal.innerHTML = "CATALOGO <br> <span>WEB</span>";
 
     Object.keys(baseDeDatos).forEach(nombre => {
         const rubro = baseDeDatos[nombre];

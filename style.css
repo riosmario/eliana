@@ -388,3 +388,11 @@ body { font-family: 'Segoe UI', sans-serif; margin: 0; background-color: #f4f4f4
         font-size: 0.75rem;
     }
 }
+
+/* --- ESTILO PARA EL LOGO DEL HEADER --- */
+.header-logo {
+    height: 100px;       /* <--- Altura del logo para que quede compacto en el renglón */
+    width: auto;        /* Mantiene la proporción de la imagen sin deformarla */
+    object-fit: contain;
+    border-radius: 5px; /* Un pequeño redondeado por si tu logo es cuadrado */
+}
