@@ -121,7 +121,7 @@ function agregarAlCarrito(nombre, precio, event) {
     // Actualizamos el contador con la nueva leyenda
     const contador = document.getElementById('cart-counter');
     if (contador) {
-        contador.innerText = `${carrito.length} productos agregados`;
+        contador.innerText = `${carrito.length} productos`;
     }
 
     const cartel = document.createElement("span");
@@ -142,7 +142,7 @@ function eliminarDelCarrito(index) {
     // También actualizamos la leyenda al eliminar
     const contador = document.getElementById('cart-counter');
     if (contador) {
-        contador.innerText = `${carrito.length} productos agregados`;
+        contador.innerText = `${carrito.length} productos`;
     }
     abrirModal();
 }
