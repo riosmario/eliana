@@ -29,7 +29,7 @@ function mostrarRubros() {
     });
 }
 
-// 3. MOSTRAR PRODUCTOS (Versión corregida para que aparezcan los filtros)
+// 3. MOSTRAR PRODUCTOS (Modificada para que NO cargue productos al inicio si es TEXTIL)
 function mostrarProductos(nombreRubro) {
     console.log("Cargando rubro:", nombreRubro);
 
@@ -41,11 +41,17 @@ function mostrarProductos(nombreRubro) {
 
     if (btnVolver) btnVolver.style.display = "block";
 
-    // CORRECCIÓN: Usamos .includes para detectar "TEXTIL" aunque tenga el emoji del vestido
+    // Vaciamos el contenedor para limpiar la pantalla
+    contenedor.innerHTML = "";
+
+    // Si es el rubro Textil, activamos los mosaicos grandes y NO cargamos productos abajo
     if (filtrosTextil) {
         if (nombreRubro.toUpperCase().includes("TEXTIL")) {
-            filtrosTextil.style.display = "flex"; // Mostramos los sub-menús
-            console.log("Filtros activados correctamente");
+            filtrosTextil.style.display = "flex"; // Mostramos los sub-menús en mosaico
+            console.log("Filtros activados correctamente, pantalla limpia de productos");
+            if (tituloPrincipal) tituloPrincipal.innerText = nombreRubro;
+            window.scrollTo(0,0);
+            return; // <--- IMPORTANTE: Con este 'return' evitamos que dibuje productos abajo
         } else {
             filtrosTextil.style.display = "none";
         }
@@ -57,10 +63,9 @@ function mostrarProductos(nombreRubro) {
     }
 
     if (tituloPrincipal) tituloPrincipal.innerText = nombreRubro;
-
-    contenedor.innerHTML = "";
+    
+    // Si llegara a ser otro rubro que no es textil, sí cargamos todo de una
     contenedor.className = "lista-productos-detalle";
-
     rubro.productos.forEach(p => {
         const tarjeta = document.createElement("div");
         tarjeta.className = "tarjeta-horizontal";
@@ -75,18 +80,22 @@ function mostrarProductos(nombreRubro) {
     });
 
     window.scrollTo(0,0);
-}   
+}
 
 function filtrarPorSub(subCategoria) {
     const contenedor = document.getElementById("productos-grid");
-    // Buscamos específicamente en el rubro textil de tu base de datos
     const productosTextil = baseDeDatos["👗 TEXTIL"].productos;
     
-    // Filtramos
-    const productosFiltrados = productosTextil.filter(p => p.sub === subCategoria);
-    
-    // Limpiamos y dibujamos solo los filtrados
+    // Cambiamos el contenedor a la grilla de productos detallados
+    contenedor.className = "lista-productos-detalle";
     contenedor.innerHTML = "";
+    
+    // Si elige TODOS, pasa el perchero completo; si no, filtra exactamente por lo que dice el botón
+    const productosFiltrados = (subCategoria === "TODOS") 
+        ? productosTextil 
+        : productosTextil.filter(p => p.sub === subCategoria);
+    
+    // Dibujamos las tarjetas de ropa en la pantalla
     productosFiltrados.forEach(p => {
         const tarjeta = document.createElement("div");
         tarjeta.className = "tarjeta-horizontal";
@@ -98,6 +107,11 @@ function filtrarPorSub(subCategoria) {
         `;
         contenedor.appendChild(tarjeta);
     });
+    
+    // Si por esas casualidades un rubro no tiene productos todavía
+    if (contenedor.innerHTML === "") {
+        contenedor.innerHTML = `<p style="text-align:center; padding:20px; width:100%;">Próximamente más productos en esta categoría... 👗</p>`;
+    }
 }
 
 // 4. LÓGICA DEL CARRITO

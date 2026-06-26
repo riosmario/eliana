@@ -343,49 +343,59 @@ body { font-family: 'Segoe UI', sans-serif; margin: 0; background-color: #f4f4f4
     color: #666;
 }
 
-/* --- SUB-MENÚ DE FILTROS (NUEVO) --- */
+
+/* --- SUB-MENÚ DE FILTROS (TRANSFORMADO EN MOSAICO) --- */
 .sub-rubros {
-    display: none; /* Se activa por JavaScript solo cuando entras a TEXTIL */
+    display: none; /* Se activa por JavaScript cuando entrás a Textil */
     justify-content: center;
-    flex-wrap: wrap; /* Para que en celulares se acomoden en varias filas si es necesario */
-    gap: 12px;
-    padding: 20px 10px;
-    background-color: #ffffff; /* Cambiado a BLANCO para que resalte sobre el fondo gris de la tienda */
-    border-bottom: 2px solid #a532b2; /* Una línea violeta para separar de los productos */
+    align-items: center;
+    flex-wrap: wrap; 
+    gap: 20px;       /* Un poco más de espacio entre las tarjetas */
+    padding: 30px 15px;
+    background-color: #f4f4f4; /* Fondo gris claro igual al de la tienda */
     width: 100%;
     box-sizing: border-box;
 }
 
+/* Transformamos los botones simples en tarjetas imponentes */
 .btn-sub {
-    background-color: #e2f42a; /* Tu amarillo neón característico */
-    color: #a532b2;            /* Texto púrpura para que combine con el header */
+    background-color: white; /* Tarjeta blanca como las demás */
+    color: #333333;          /* Texto oscuro legible */
     border: none;
-    padding: 10px 20px;
-    border-radius: 50px;       /* Forma ovalada como el botón VOLVER */
+    width: 100%;
+    max-width: 260px;       /* Tamaño ideal para que entren varios en fila */
+    height: 150px;          /* Altura para que parezcan cajas */
+    border-radius: 12px;     /* Esquinas redondeadas idénticas a las del rubro */
     font-weight: bold;
-    font-size: 0.85rem;
+    font-size: 1.2rem;       /* Texto más grande y claro */
     text-transform: uppercase;
     cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Sombra suave para que parezcan botones reales */
-    transition: all 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Misma sombra flotante */
+    transition: all 0.3s ease;
+    
+    /* Centramos el texto dentro del mosaico */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* Efecto al tocar el botón o pasar el mouse */
+/* Efecto al pasar el mouse por encima del mosaico */
 .btn-sub:hover, .btn-sub:active {
-    background-color: #a532b2; /* Se invierten los colores al tocar */
-    color: #e2f42a;
-    transform: scale(1.05); /* Se agranda un poquito al presionar */
+    background-color: #a532b2; /* Se pinta de violeta al seleccionarlo */
+    color: white;
+    transform: translateY(-5px); /* Se eleva un poquito igual que el catálogo */
 }
 
-/* Ajuste para pantallas de celular muy chicas */
+/* Ajuste fino para que en celulares se sigan viendo como cajas cómodas */
 @media (max-width: 480px) {
     .sub-rubros {
-        padding: 15px 5px;
-        gap: 8px;
+        padding: 20px 10px;
+        gap: 15px;
     }
     .btn-sub {
-        padding: 8px 12px;
-        font-size: 0.75rem;
+        max-width: 140px;  /* Entran de a dos por fila en la pantalla del celular */
+        height: 110px;
+        font-size: 0.95rem;
     }
 }
 
