@@ -364,7 +364,7 @@ body { font-family: 'Segoe UI', sans-serif; margin: 0; background-color: #f4f4f4
     width: 100%;
     max-width: 150px;       /* Tamaño ideal para que entren varios en fila */
     height: 60px;          /* Altura para que parezcan cajas */
-    border-radius: 12px;     /* Esquinas redondeadas idénticas a las del rubro */
+    border-radius: 40px;     /* Esquinas redondeadas idénticas a las del rubro */
     font-weight: bold;
     font-size: 1.2rem;       /* Texto más grande y claro */
     text-transform: uppercase;
