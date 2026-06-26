@@ -65,7 +65,7 @@ const baseDeDatos = {
     */
 
     "👗 TEXTIL": {
-        imagen: "img/rubros/_rubros_titulos/textil.jpg",
+        imagen: "img/rubros/textil.jpg",
         productos: [
             { nombre: "Bombacha Cola Less - Lisa Talle Especial - Algodón", precio: 0, sub: "Mujer", img: "img/rubros/textil/mujer/MUJER_BOM,BACHA DE DAMA COLA LESS LISA ESPECIAL ALGODON.jpg" },
             { nombre: "Bombacha Cola Less - Atigrada Talle Especial", precio: 0, sub: "Mujer", img: "img/rubros/textil/mujer/MUJER_BOMBACHA COLA LESS ATIGRADA.jpg" },
