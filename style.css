@@ -61,29 +61,28 @@ body { font-family: 'Segoe UI', sans-serif; margin: 0; background-color: #f4f4f4
     white-space: nowrap;
 }
 
-.btn-volver-estilo {
-    background-color: #ccff00; /* Ese verde lima llamativo */
-    color: #a532b2;            /* Texto violeta para que contraste */
+#btn-volver {
+    position: fixed;       /* Lo despega del flujo y lo deja fijo en la pantalla */
+    bottom: 20px;          /* Distancia desde la parte inferior */
+    left: 20px;            /* Distancia desde el borde izquierdo (podés cambiarlo a 'right' si preferís) */
+    z-index: 1000;         /* Se asegura de que flote POR ENCIMA de todas las tarjetas de productos */
+    
+    /* Tu estilo actual (redondeado, color llamativo, etc.) */
+    background-color: #ccff00; /* Tu verde/amarillo flúor actual */
+    color: #000;
+    padding: 12px 20px;
     border: none;
-    padding: 8px 20px;         /* Espaciado para que parezca un óvalo */
-    border-radius: 50px;       /* Bordes muy redondeados */
+    border-radius: 50px;   /* Bien redondeado tipo cápsula */
     font-weight: bold;
-    text-transform: uppercase; /* Todo en mayúsculas como en tu foto */
-    display: flex;
-    align-items: center;
-    gap: 8px;                  /* Espacio entre la flecha y el texto */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Sombra para que "flote" de verdad */
     cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Una pequeña sombra para que flote */
+    transition: transform 0.2s ease;
 }
 
-.btn-volver-estilo i {
-    margin-right: 8px; /* Esto separa la flecha de la palabra Volver */
+/* Un pequeño efecto visual al pasar el mouse en PC */
+#btn-volver:hover {
+    transform: scale(1.05);
 }
-
-/* --- GRILLAS --- */
-/*.grid-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 15px; padding-top: 20px; }
-.lista-productos-detalle { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 15px; }
-*/
 
 /* --- GRILLAS --- */
 .grid-container { 
