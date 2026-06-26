@@ -1,15 +1,27 @@
 let carrito = [];
 
 // 2. MOSTRAR RUBROS
+// 2. MOSTRAR RUBROS (Modificada para resetear los filtros bloqueados)
 function mostrarRubros() {
     const contenedor = document.getElementById("productos-grid");
     const btnVolver = document.getElementById("btn-volver");
-    const filtrosTextil = document.getElementById("filtros-textil"); // <--- Agregamos esto
+    const filtrosTextil = document.getElementById("filtros-textil"); 
     const tituloPrincipal = document.getElementById("main-title");
 
     if (btnVolver) btnVolver.style.display = "none";
-    if (filtrosTextil) filtrosTextil.style.display = "none"; // <--- Ocultamos los filtros al volver
+    if (filtrosTextil) filtrosTextil.style.display = "none"; 
     
+    // ✨ TRUCO LIMPIADOR: Restauramos los estilos de los filtros al volver al menú principal
+    const todosLosBotones = document.querySelectorAll('.btn-sub');
+    todosLosBotones.forEach(btn => {
+        btn.style.display = "flex";          // Volvemos a mostrar todas las tarjetas ocultas
+        btn.style.gridColumn = "";           // Quitamos el centrado forzado
+        btn.style.margin = "";               // Quitamos márgenes manuales
+        btn.style.maxWidth = "";             // Quitamos ancho máximo
+        btn.style.backgroundColor = "#fff";  // Reestablecemos el color blanco del fondo
+        btn.style.color = "#000";            // Volvemos el texto a negro
+    });
+
     if (!contenedor) return;
 
     contenedor.innerHTML = "";
@@ -82,38 +94,62 @@ function mostrarProductos(nombreRubro) {
     window.scrollTo(0,0);
 }
 
-function filtrarPorSub(subCategoria) {
+function filtrarPorSub(subCategoria, elementoClicado) {
     const contenedor = document.getElementById("productos-grid");
-    const productosTextil = baseDeDatos["👗 TEXTIL"].productos;
     
-    // Cambiamos el contenedor a la grilla de productos detallados
+    // 1. EFECTO VISUAL EN LAS TARJETAS DE FILTRO
+    // Buscamos todos los botones de los sub-rubros (Asegurate de que usen esta clase)
+    const todosLosBotones = document.querySelectorAll('.btn-sub');
+    
+    if (elementoClicado) {
+        todosLosBotones.forEach(btn => {
+            if (btn === elementoClicado) {
+                // Al que tocamos: lo dejamos visible y lo centramos
+                btn.style.display = "flex";
+                btn.style.gridColumn = "1 / -1"; // Ocupa todo el ancho del grid para poder centrarse
+                btn.style.margin = "0 auto";
+                btn.style.maxWidth = "200px";    // Para que no se estire feo en pantallas grandes
+                btn.style.backgroundColor = "#ccff00"; // Tu verde flúor para resaltar qué se eligió
+                btn.style.color = "#000";
+            } else {
+                // A todos los demás: ¡los ocultamos!
+                btn.style.display = "none";
+            }
+        });
+    }
+
+    // 2. BUSCADOR INTELIGENTE EN LA BASE DE DATOS
+    const claveTextil = Object.keys(baseDeDatos).find(clave => clave.toUpperCase().includes("TEXTIL"));
+    
+    if (!claveTextil || !baseDeDatos[claveTextil]) {
+        console.error("No se encontró el rubro TEXTIL");
+        return;
+    }
+
+    const productosTextil = baseDeDatos[claveTextil].productos;
     contenedor.className = "lista-productos-detalle";
     contenedor.innerHTML = "";
     
-    // Si elige TODOS, pasa el perchero completo; si no, filtra exactamente por lo que dice el botón
+    // 3. FILTRADO DE LA ROPA
     const productosFiltrados = (subCategoria === "TODOS") 
         ? productosTextil 
         : productosTextil.filter(p => p.sub === subCategoria);
     
-    // Dibujamos las tarjetas de ropa en la pantalla
+    // 4. RENDERIZAR LOS PRODUCTOS ABAJO
     productosFiltrados.forEach(p => {
         const tarjeta = document.createElement("div");
         tarjeta.className = "tarjeta-horizontal";
         tarjeta.innerHTML = `
             <img src="${p.img}" onclick="agrandarImagen('${p.img}')">
-            <h3>${p.nombre}</h3>
-            <p class="precio">$${p.precio}</p>
-            <button class="btn-add" onclick="agregarAlCarrito('${p.nombre}', ${p.precio}, event)">+</button>
+            <div class="info-producto">
+                <h3>${p.nombre}</h3>
+                <p class="precio">$${p.precio}</p>
+            </div>
+            <button class="btn-agregar" onclick="agregarAlCarrito('${p.nombre}', ${p.precio})">Agregar</button>
         `;
         contenedor.appendChild(tarjeta);
     });
-    
-    // Si por esas casualidades un rubro no tiene productos todavía
-    if (contenedor.innerHTML === "") {
-        contenedor.innerHTML = `<p style="text-align:center; padding:20px; width:100%;">Próximamente más productos en esta categoría... 👗</p>`;
-    }
 }
-
 // 4. LÓGICA DEL CARRITO
 function agregarAlCarrito(nombre, precio, event) {
     carrito.push({ nombre, precio });
@@ -187,33 +223,6 @@ function abrirModal() {
     }
 
     if (totalTxt) totalTxt.innerText = `$${totalAcumulado}`;
-}
-
-// Nueva función unificada para enviar a WhatsApp con el formato de imagen
-function enviarWhatsApp() {
-    const nombreCliente = document.getElementById('nombre-cliente').value;
-    const direccionCliente = document.getElementById('direccion-cliente').value;
-    const total = document.getElementById('total-precio').innerText;
-
-    if (!nombreCliente) {
-        alert("Por favor, ingresa tu nombre para el pedido.");
-        return;
-    }
-
-    let mensaje = `*Pedido de:* ${nombreCliente}%0A`;
-    if (direccionCliente) mensaje += `*Dirección:* ${direccionCliente}%0A`;
-    mensaje += "--------------------------%0A";
-
-    carrito.forEach(item => {
-        mensaje += `• ${item.nombre} ($${item.precio})%0A`;
-    });
-
-    mensaje += "--------------------------%0A";
-    mensaje += `*Total: ${total}*%0A%0A`; // Doble salto para la leyenda
-    mensaje += "(Este precio es en Efectivo o transferencia)";
-
-    // Número de tu negocio: 3513018831
-    window.open(`https://wa.me/5493513018831?text=${mensaje}`, '_blank');
 }
 
 function cerrarModal() {
