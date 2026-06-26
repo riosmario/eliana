@@ -362,8 +362,8 @@ body { font-family: 'Segoe UI', sans-serif; margin: 0; background-color: #f4f4f4
     color: #333333;          /* Texto oscuro legible */
     border: none;
     width: 100%;
-    max-width: 260px;       /* Tamaño ideal para que entren varios en fila */
-    height: 150px;          /* Altura para que parezcan cajas */
+    max-width: 200px;       /* Tamaño ideal para que entren varios en fila */
+    height: 80px;          /* Altura para que parezcan cajas */
     border-radius: 12px;     /* Esquinas redondeadas idénticas a las del rubro */
     font-weight: bold;
     font-size: 1.2rem;       /* Texto más grande y claro */
