@@ -136,6 +136,7 @@ function filtrarPorSub(subCategoria, elementoClicado) {
         : productosTextil.filter(p => p.sub === subCategoria);
     
     // 4. RENDERIZAR LOS PRODUCTOS ABAJO
+    // 4. RENDERIZAR LOS PRODUCTOS ABAJO (Corregido para enganchar tu botón original)
     productosFiltrados.forEach(p => {
         const tarjeta = document.createElement("div");
         tarjeta.className = "tarjeta-horizontal";
@@ -145,7 +146,7 @@ function filtrarPorSub(subCategoria, elementoClicado) {
                 <h3>${p.nombre}</h3>
                 <p class="precio">$${p.precio}</p>
             </div>
-            <button class="btn-agregar" onclick="agregarAlCarrito('${p.nombre}', ${p.precio})">Agregar</button>
+            <button class="btn-add" onclick="agregarAlCarrito('${p.nombre}', ${p.precio}, event)">+</button>
         `;
         contenedor.appendChild(tarjeta);
     });
