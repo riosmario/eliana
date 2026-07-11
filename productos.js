@@ -65,7 +65,7 @@ const baseDeDatos = {
     */
 
     "👗 TEXTIL": {
-        imagen: "img/rubros/textil.jpg",
+        imagen: "img/rubros/textil-a.jpg",
         productos: [
             { nombre: "Buzo Dama Darlon (2)", precio: 35000, sub: "Mujer", img: "img/rubros/textil/mujer/BUZO DAMA DARLON (2).jpg" },
             { nombre: "Buzo Dama Darlon", precio: 35000, sub: "Mujer", img: "img/rubros/textil/mujer/BUZO DAMA DARLON.jpg" },
