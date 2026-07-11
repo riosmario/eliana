@@ -1,8 +1,8 @@
 const baseDeDatos = {
-    /*"✏️ ARTICULOS ESCOLARES": {
-        imagen: "img/rubros/_rubros_titulos/libreria.png",
-        productos: [
-            { nombre: "Fibrón Ositos", precio: 1200, img: "img/rubros/libreria/LIBRERIA_FIBRONES OSITOS.png" },
+    "✏️ ARTICULOS ESCOLARES": {
+        imagen: "img/rubros/libreria.png",
+        productos: [] 
+    /*      { nombre: "Fibrón Ositos", precio: 1200, img: "img/rubros/libreria/LIBRERIA_FIBRONES OSITOS.png" },
             { nombre: "Fibrones Ezco x12", precio: 4500, img: "img/rubros/libreria/escolar_fibrones_ezco_x12.jpg" },
             { nombre: "Fibrón Olami x12", precio: 4200, img: "img/rubros/libreria/escolar_fibron_olami_x12.jpg" },
             { nombre: "Fibrón Olami x36", precio: 8900, img: "img/rubros/libreria/escolar_fibron_olami_x36.jpg" },
@@ -25,13 +25,13 @@ const baseDeDatos = {
             { nombre: "Set Geometría Económico", precio: 1800, img: "img/rubros/libreria/escolar_set_geometria_economico.jpg" },
             { nombre: "Tapas N3 Caroeta", precio: 2200, img: "img/rubros/escolar/libreria_tapas_n3_caroeta.jpg" },
             { nombre: "Lápices Negros con Goma x12", precio: 2400, img: "img/rubros/libreria/escolar_lapices_negro_con_goma_x12.jpg" }
-        ]
+        ]*/
     },
     
-    "🎒 MOCHILAS": {
+    /*"🎒 MOCHILAS": {
         imagen: "img/rubros/_rubros_titulos/mochila.jpg",
         productos: [
-            { nombre: "Cool Girl", precio: 16900, img: "img/rubros/mochilas/cool_girld.jpg" },
+        { nombre: "Cool Girl", precio: 16900, img: "img/rubros/mochilas/cool_girld.jpg" },
             { nombre: "Dream", precio: 24900, img: "img/rubros/mochilas/dream.jpg" },
             { nombre: "Game", precio: 15000, img: "img/rubros/mochilas/game.jpg" },
             { nombre: "Gamer", precio: 15000, img: "img/rubros/mochilas/gamer.jpg" },
@@ -45,9 +45,9 @@ const baseDeDatos = {
             { nombre: "Lentejuelas", precio: 14000, img: "img/rubros/mochilas/lentejuelas.jpg" },
             { nombre: "Mochila Jardín", precio: 12000, img: "img/rubros/mochilas/mochila_jardin.jpg" }
         ]
-    },
+    },*/
 
-    "🍽️ BAZAR ESCOLAR": {
+    /*"🍽️ BAZAR ESCOLAR": {
         imagen: "img/rubros/_rubros_titulos/bazar_escolar.jpg",
         productos: [
             { nombre: "Botella Deportiva multicolor", precio: 4500, img: "img/rubros/bazar_escolar/botella_deportiva_multicolor.jpg" },
@@ -61,8 +61,8 @@ const baseDeDatos = {
             { nombre: "Set Jabonera y Toalla 06", precio: 3200, img: "img/rubros/bazar_escolar/set_jaboner_y_toalla_06.jpg" },
             { nombre: "Set Jabonera y Toalla 07", precio: 3200, img: "img/rubros/bazar_escolar/set_jaboner_y_toalla_07.jpg" }
         ]
-    },
-    */
+    },*/
+    
 
     "👗 TEXTIL": {
         imagen: "img/rubros/textil-a.jpg",
@@ -148,11 +148,10 @@ const baseDeDatos = {
         ]
     },
 
-    /*
     "🧸 PELUCHES": {
-        imagen: "img/rubros/_rubros_titulos/peluches.jpg",
+        imagen: "img/rubros/peluches.jpg",
         productos: [
-            { nombre: "Peluche Gatito con Dona", precio: 8500, img: "img/rubros/peluches/peluche_gatito_con_dona.jpg" },
+            /*{ nombre: "Peluche Gatito con Dona", precio: 8500, img: "img/rubros/peluches/peluche_gatito_con_dona.jpg" },
             { nombre: "Peluche Oso Corazón", precio: 9200, img: "img/rubros/peluches/peluche_oso_corazon.jpg" },
             { nombre: "Peluche Gatito Refresco", precio: 8500, img: "img/rubros/peluches/peluche_gatito_refresco.jpg" },
             { nombre: "Peluche Almohada Smoochy", precio: 12000, img: "img/rubros/peluches/peluche_almohada_smoochy.jpg" },
@@ -160,7 +159,7 @@ const baseDeDatos = {
             { nombre: "Peluche Almohadon", precio: 10500, img: "img/rubros/peluches/peluche_almohadon.jpg" },
             { nombre: "Peluche Caracol", precio: 6500, img: "img/rubros/peluches/peluche_caracol.jpg" },
             { nombre: "Peluche Gatito con Disfraz", precio: 8900, img: "img/rubros/peluches/peluche_gatito_con_disfraz.jpg" }
-        ]
+        */
+            ]
     }
-    */
 };

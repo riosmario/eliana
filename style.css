@@ -446,3 +446,63 @@ body { font-family: 'Segoe UI', sans-serif; margin: 0; background-color: #f4f4f4
     font-weight: normal;          /* Le saca el grueso para que estilice */
     margin-right: 4px;            /* ¡Y acá le da el espacio exacto con el número! */
 }
+
+/* --- TARJETAS DE RUBROS EN EXPECTATIVA (CORREGIDO) --- */
+.rubro-bloqueado {
+    position: relative;
+    cursor: not-allowed !important;
+    pointer-events: none; /* Desactiva los clics por completo */
+}
+
+/* Ponemos la foto del rubro en blanco y negro y traslúcida */
+.rubro-bloqueado img {
+    filter: grayscale(100%) opacity(0.5);
+    transition: all 0.3s ease;
+}
+
+/* Cartelito flotante con el verde flúor de tu tienda */
+.rubro-bloqueado::after {
+    content: "PRÓXIMAMENTE";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.85);
+    color: #ccff00; /* Tu hermoso verde limón */
+    padding: 8px 14px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    border-radius: 8px;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+    z-index: 10;
+}
+
+
+/* --- TARJETAS DE RUBROS EN EXPECTATIVA --- */
+.rubro-bloqueado {
+    position: relative;
+    cursor: not-allowed !important;
+    pointer-events: none; /* 👈 Esto desactiva el click por completo */
+}
+
+.rubro-bloqueado img {
+    filter: grayscale(100%) opacity(0.5); /* Pone la foto gris */
+}
+
+.rubro-bloqueado::after {
+    content: "PRÓXIMAMENTE";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.85);
+    color: #ccff00; /* Tu verde flúor */
+    padding: 8px 14px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    border-radius: 8px;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+    z-index: 10;
+}
