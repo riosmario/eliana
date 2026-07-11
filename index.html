@@ -29,15 +29,15 @@
         </div>
     </header>
 
-   <div id="filtros-textil" class="sub-rubros" style="display: none;">
-    <button class="btn-sub" onclick="filtrarPorSub('Hombre', this)">HOMBRE</button>
-    <button class="btn-sub" onclick="filtrarPorSub('Mujer', this)">MUJER</button>
-    <button class="btn-sub" onclick="filtrarPorSub('Niños', this)">NIÑOS</button>
-    <button class="btn-sub" onclick="filtrarPorSub('Nena', this)">NENA</button>
-    <button class="btn-sub" onclick="filtrarPorSub('Bebé', this)">BEBÉ</button>
-    <button class="btn-sub" onclick="filtrarPorSub('TODOS', this)">TODOS</button>
-</div>
+    <div id="filtros-textil" class="sub-rubros" style="display: none;">
+        <button class="btn-sub btn-sub-inactivo" disabled>HOMBRE</button>
+        <button class="btn-sub btn-sub-activo" onclick="filtrarPorSub('Mujer', this)">MUJER</button>
+        <button class="btn-sub btn-sub-inactivo" disabled>NIÑOS</button>
+        <button class="btn-sub btn-sub-inactivo" disabled>NENA</button>
+        <button class="btn-sub btn-sub-inactivo" disabled>BEBÉ</button>
+        <button class="btn-sub btn-sub-inactivo" disabled>TODOS</button>
 
+    </div>
     <main class="container">
         <section id="productos-grid" class="grid-container"></section>
     </main>

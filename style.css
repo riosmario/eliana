@@ -405,3 +405,44 @@ body { font-family: 'Segoe UI', sans-serif; margin: 0; background-color: #f4f4f4
     object-fit: contain;
     border-radius: 5px; /* Un pequeño redondeado por si tu logo es cuadrado */
 }
+
+/* --- BOTÓN SUBRUBRO ACTIVO (Verde Limón) --- */
+.btn-sub-activo {
+    background-color: #ccff00 !important; /* Verde limón idéntico al carrito */
+    color: #000000 !important;            /* Texto negro para buena lectura */
+    font-weight: bold;
+    border: 2px solid #b3e600 !important;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* --- BOTONES SUBRUBROS INACTIVOS (Grisados) --- */
+.btn-sub-inactivo {
+    background-color: #e0e0e0 !important; /* Fondo gris apagado */
+    color: #a0a0a0 !important;            /* Texto gris claro */
+    border: 1px solid #d3d3d3 !important;
+    cursor: not-allowed !important;       /* Cursor de prohibido */
+    pointer-events: none;                 /* Desactiva clics */
+    box-shadow: none !important;
+    opacity: 0.7;
+}
+
+/* --- TRUCO CSS PARA ESTILIZAR EL SIGNO PESO SIN TOCAR EL JS --- */
+.precio {
+    font-size: 0; /* Oculta temporalmente el texto base para rearmarlo */
+}
+
+/* --- LIMPIEZA Y AJUSTE DEL SIGNO PESO ORIGINAL --- */
+.precio {
+    font-size: 18px !important;   /* El tamaño del precio que más te guste */
+    font-weight: bold;
+    display: inline-block;
+    letter-spacing: 0.5px;        /* Un toque de aire general */
+}
+
+/* Este truco agarra ÚNICAMENTE el primer caracter (el $) que ya dibuja tu JS */
+.precio::first-letter {
+    font-size: 0.7em !important;  /* Lo achica un 30% automáticamente */
+    font-weight: normal;          /* Le saca el grueso para que estilice */
+    margin-right: 4px;            /* ¡Y acá le da el espacio exacto con el número! */
+}
