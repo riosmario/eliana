@@ -36,8 +36,8 @@
         <button class="btn-sub btn-sub-inactivo" disabled>NENA</button>
         <button class="btn-sub btn-sub-inactivo" disabled>BEBÉ</button>
         <button class="btn-sub btn-sub-inactivo" disabled>TODOS</button>
-
     </div>
+
     <main class="container">
         <section id="productos-grid" class="grid-container"></section>
     </main>
@@ -66,11 +66,24 @@
         </div>
     </div>
 
+    <!-- MODAL DE ZOOM CON DETALLE DE PRODUCTO Y BOTÓN MAS -->
     <div id="modal-imagen" class="modal-img" onclick="cerrarImagen(event)">
-        <span class="close-img-btn" onclick="cerrarImagen(event)">&times;</span>
+        <div class="modal-zoom-contenido" onclick="event.stopPropagation()">
+            <span class="close-img-btn" onclick="cerrarImagen(event)">&times;</span>
 
-        <img id="img-agrandada" class="modal-img-contenido">
-        <div id="caption-imagen"></div>
+            <!-- Contenedor que maneja el espacio de la imagen -->
+            <div class="modal-img-container">
+                <img id="img-agrandada" src="" alt="Producto Agrandado">
+            </div>
+
+            <div class="zoom-info-card">
+                <div class="zoom-textos">
+                    <h3 id="zoom-titulo">Nombre del Producto</h3>
+                    <p id="zoom-precio" class="precio">$0</p>
+                </div>
+                <button id="zoom-btn-add" class="btn-add">+</button>
+            </div>
+        </div>
     </div>
 
     <footer class="main-footer">

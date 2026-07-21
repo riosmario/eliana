@@ -4,20 +4,20 @@ let carrito = [];
 function mostrarRubros() {
     const contenedor = document.getElementById("productos-grid");
     const btnVolver = document.getElementById("btn-volver");
-    const filtrosTextil = document.getElementById("filtros-textil"); 
+    const filtrosTextil = document.getElementById("filtros-textil");
     const tituloPrincipal = document.getElementById("main-title");
 
     if (btnVolver) btnVolver.style.display = "none";
-    if (filtrosTextil) filtrosTextil.style.display = "none"; 
-    
+    if (filtrosTextil) filtrosTextil.style.display = "none";
+
     const todosLosBotones = document.querySelectorAll('.btn-sub');
     todosLosBotones.forEach(btn => {
-        btn.style.display = "flex";          
-        btn.style.gridColumn = "";           
-        btn.style.margin = "";               
-        btn.style.maxWidth = "";             
-        btn.style.backgroundColor = "#fff";  
-        btn.style.color = "#000";            
+        btn.style.display = "flex";
+        btn.style.gridColumn = "";
+        btn.style.margin = "";
+        btn.style.maxWidth = "";
+        btn.style.backgroundColor = "#fff";
+        btn.style.color = "#000";
     });
 
     if (!contenedor) return;
@@ -29,10 +29,10 @@ function mostrarRubros() {
     Object.keys(baseDeDatos).forEach(nombre => {
         const rubro = baseDeDatos[nombre];
         const div = document.createElement("div");
-        
+
         // Convertimos el nombre a mayúsculas para evitar problemas con tildes o minúsculas
         const nombreMayus = nombre.toUpperCase();
-        
+
         // 🔍 REVISIÓN DE NOMBRE: Si el rubro incluye estas palabras, lo desactiva automáticamente
         if (nombreMayus.includes("ESCOLARES") || nombreMayus.includes("PELUCHES") || nombreMayus.includes("BAZAR")) {
             div.className = "product-card-rubro rubro-bloqueado"; // Aplica los estilos del cartel
@@ -50,6 +50,7 @@ function mostrarRubros() {
 }
 
 // 3. MOSTRAR PRODUCTOS
+// 3. MOSTRAR PRODUCTOS (Corregido con datos para el zoom)
 function mostrarProductos(nombreRubro) {
     console.log("Cargando rubro:", nombreRubro);
 
@@ -64,11 +65,11 @@ function mostrarProductos(nombreRubro) {
 
     if (filtrosTextil) {
         if (nombreRubro.toUpperCase().includes("TEXTIL")) {
-            filtrosTextil.style.display = "flex"; 
+            filtrosTextil.style.display = "flex";
             console.log("Filtros activados correctamente, pantalla limpia de productos");
             if (tituloPrincipal) tituloPrincipal.innerText = nombreRubro;
-            window.scrollTo(0,0);
-            return; 
+            window.scrollTo(0, 0);
+            return;
         } else {
             filtrosTextil.style.display = "none";
         }
@@ -80,14 +81,15 @@ function mostrarProductos(nombreRubro) {
     }
 
     if (tituloPrincipal) tituloPrincipal.innerText = nombreRubro;
-    
+
     contenedor.className = "lista-productos-detalle";
     rubro.productos.forEach(p => {
         const tarjeta = document.createElement("div");
         tarjeta.className = "tarjeta-horizontal";
 
+        // ✨ AQUÍ ESTÁ EL CAMBIO EN LA IMAGEN:
         tarjeta.innerHTML = `
-            <img src="${p.img}" onclick="agrandarImagen('${p.img}')">
+            <img src="${p.img}" onclick="agrandarImagen('${p.img}', '${p.nombre}', ${p.precio})">
             <h3>${p.nombre}</h3>
             <p class="precio">$${p.precio}</p>
             <button class="btn-add" onclick="agregarAlCarrito('${p.nombre}', ${p.precio}, event)">+</button>
@@ -95,21 +97,22 @@ function mostrarProductos(nombreRubro) {
         contenedor.appendChild(tarjeta);
     });
 
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
 }
 
+// FILTRAR SUB-CATEGORÍAS (Corregido con datos para el zoom)
 function filtrarPorSub(subCategoria, elementoClicado) {
     const contenedor = document.getElementById("productos-grid");
     const todosLosBotones = document.querySelectorAll('.btn-sub');
-    
+
     if (elementoClicado) {
         todosLosBotones.forEach(btn => {
             if (btn === elementoClicado) {
                 btn.style.display = "flex";
-                btn.style.gridColumn = "1 / -1"; 
+                btn.style.gridColumn = "1 / -1";
                 btn.style.margin = "0 auto";
-                btn.style.maxWidth = "200px";    
-                btn.style.backgroundColor = "#ccff00"; 
+                btn.style.maxWidth = "200px";
+                btn.style.backgroundColor = "#ccff00";
                 btn.style.color = "#000";
             } else {
                 btn.style.display = "none";
@@ -118,7 +121,7 @@ function filtrarPorSub(subCategoria, elementoClicado) {
     }
 
     const claveTextil = Object.keys(baseDeDatos).find(clave => clave.toUpperCase().includes("TEXTIL"));
-    
+
     if (!claveTextil || !baseDeDatos[claveTextil]) {
         console.error("No se encontró el rubro TEXTIL");
         return;
@@ -127,16 +130,18 @@ function filtrarPorSub(subCategoria, elementoClicado) {
     const productosTextil = baseDeDatos[claveTextil].productos;
     contenedor.className = "lista-productos-detalle";
     contenedor.innerHTML = "";
-    
-    const productosFiltrados = (subCategoria === "TODOS") 
-        ? productosTextil 
+
+    const productosFiltrados = (subCategoria === "TODOS")
+        ? productosTextil
         : productosTextil.filter(p => p.sub === subCategoria);
-    
+
     productosFiltrados.forEach(p => {
         const tarjeta = document.createElement("div");
         tarjeta.className = "tarjeta-horizontal";
+
+        // ✨ AQUÍ ESTÁ EL CAMBIO EN LA IMAGEN:
         tarjeta.innerHTML = `
-            <img src="${p.img}" onclick="agrandarImagen('${p.img}')">
+            <img src="${p.img}" onclick="agrandarImagen('${p.img}', '${p.nombre}', ${p.precio})">
             <div class="info-producto">
                 <h3>${p.nombre}</h3>
                 <p class="precio">$${p.precio}</p>
@@ -251,10 +256,10 @@ function enviarWhatsApp() {
     });
 
     mensaje += "--------------------------%0A";
-    mensaje += `*Total: $${total}*%0A`; 
+    mensaje += `*Total: $${total}*%0A`;
     mensaje += "%0A";
-    mensaje += "Este precio es: %0A"; 
-    mensaje += "_Efectivo o transferencia_"; 
+    mensaje += "Este precio es: %0A";
+    mensaje += "_Efectivo o transferencia_";
 
     window.open(`https://wa.me/5493513018831?text=${mensaje}`, '_blank');
 
@@ -268,24 +273,42 @@ function enviarWhatsApp() {
 }
 
 // 6. IMÁGENES
-function agrandarImagen(src) {
+// AGGRANDAR IMAGEN (Zoom con datos dinámicos)
+function agrandarImagen(src, nombre, precio) {
     const modal = document.getElementById("modal-imagen");
     const imgContenido = document.getElementById("img-agrandada");
+    const titulo = document.getElementById("zoom-titulo");
+    const precioTxt = document.getElementById("zoom-precio");
+    const btnAdd = document.getElementById("zoom-btn-add");
 
     if (modal && imgContenido) {
         imgContenido.src = src;
+        
+        // Carga los textos correctos que vienen de la tarjeta
+        if (titulo) titulo.innerText = nombre || "Producto";
+        if (precioTxt) precioTxt.innerText = `$${precio ? precio.toLocaleString() : 0}`;
+        
+        // Asigna la acción de sumar al carrito al botón "+" del zoom
+        if (btnAdd) {
+            btnAdd.onclick = (event) => {
+                agregarAlCarrito(nombre, precio, event);
+                modal.style.display = "none"; // Cierra la imagen al agregar
+            };
+        }
+
         modal.style.display = "flex";
     }
 }
 
 function cerrarImagen(event) {
-    const elementoClickeado = event.target.id;
-    if (elementoClickeado === 'modal-imagen' || event.target.className === 'close-img-btn') {
-        document.getElementById("modal-imagen").style.display = "none";
+    const modal = document.getElementById("modal-imagen");
+    if (modal) {
+        modal.style.display = "none";
     }
 }
 
 // 7. FUNCIÓN DE BÚSQUEDA
+// BUSCADOR (Corregido con datos para el zoom)
 function buscarProductos() {
     const input = document.getElementById('buscador');
     const filtro = input.value.toLowerCase();
@@ -306,8 +329,10 @@ function buscarProductos() {
             if (p.nombre.toLowerCase().includes(filtro)) {
                 const tarjeta = document.createElement("div");
                 tarjeta.className = "tarjeta-horizontal";
+                
+                // ✨ AQUÍ ESTÁ EL CAMBIO EN LA IMAGEN:
                 tarjeta.innerHTML = `
-                    <img src="${p.img}" onclick="agrandarImagen('${p.img}')">
+                    <img src="${p.img}" onclick="agrandarImagen('${p.img}', '${p.nombre}', ${p.precio})">
                     <h3>${p.nombre}</h3>
                     <p class="precio">$${p.precio}</p>
                     <button class="btn-add" onclick="agregarAlCarrito('${p.nombre}', ${p.precio}, event)">+</button>

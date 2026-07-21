@@ -1,8 +1,8 @@
 const baseDeDatos = {
-    "✏️ ARTICULOS ESCOLARES": {
+    /*"✏️ ARTICULOS ESCOLARES": {
         imagen: "img/rubros/libreria.png",
         productos: [] 
-    /*      { nombre: "Fibrón Ositos", precio: 1200, img: "img/rubros/libreria/LIBRERIA_FIBRONES OSITOS.png" },
+          { nombre: "Fibrón Ositos", precio: 1200, img: "img/rubros/libreria/LIBRERIA_FIBRONES OSITOS.png" },
             { nombre: "Fibrones Ezco x12", precio: 4500, img: "img/rubros/libreria/escolar_fibrones_ezco_x12.jpg" },
             { nombre: "Fibrón Olami x12", precio: 4200, img: "img/rubros/libreria/escolar_fibron_olami_x12.jpg" },
             { nombre: "Fibrón Olami x36", precio: 8900, img: "img/rubros/libreria/escolar_fibron_olami_x36.jpg" },
@@ -25,8 +25,8 @@ const baseDeDatos = {
             { nombre: "Set Geometría Económico", precio: 1800, img: "img/rubros/libreria/escolar_set_geometria_economico.jpg" },
             { nombre: "Tapas N3 Caroeta", precio: 2200, img: "img/rubros/escolar/libreria_tapas_n3_caroeta.jpg" },
             { nombre: "Lápices Negros con Goma x12", precio: 2400, img: "img/rubros/libreria/escolar_lapices_negro_con_goma_x12.jpg" }
-        ]*/
-    },
+        ]
+    },*/
     
     /*"🎒 MOCHILAS": {
         imagen: "img/rubros/_rubros_titulos/mochila.jpg",
@@ -63,7 +63,6 @@ const baseDeDatos = {
         ]
     },*/
     
-
     "👗 TEXTIL": {
         imagen: "img/rubros/textil-a.jpg",
         productos: [
@@ -148,7 +147,7 @@ const baseDeDatos = {
         ]
     },
 
-    "🧸 PELUCHES": {
+    /*"🧸 PELUCHES": {
         imagen: "img/rubros/peluches.jpg",
         productos: [
             /*{ nombre: "Peluche Gatito con Dona", precio: 8500, img: "img/rubros/peluches/peluche_gatito_con_dona.jpg" },
@@ -159,7 +158,6 @@ const baseDeDatos = {
             { nombre: "Peluche Almohadon", precio: 10500, img: "img/rubros/peluches/peluche_almohadon.jpg" },
             { nombre: "Peluche Caracol", precio: 6500, img: "img/rubros/peluches/peluche_caracol.jpg" },
             { nombre: "Peluche Gatito con Disfraz", precio: 8900, img: "img/rubros/peluches/peluche_gatito_con_disfraz.jpg" }
-        */
             ]
-    }
+    },*/
 };

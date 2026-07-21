@@ -1,8 +1,18 @@
 /* --- BASE --- */
-body { font-family: 'Segoe UI', sans-serif; margin: 0; background-color: #f4f4f4; color: #333; }
-.container { max-width: 1000px; margin: 0 auto; padding: 20px; }
+body { 
+    font-family: 'Segoe UI', sans-serif; 
+    margin: 0; 
+    background-color: #f4f4f4; 
+    color: #333; 
+}
 
-/* --- HEADER COMPACTO (Inspirado en tu referencia) --- */
+.container { 
+    max-width: 1000px; 
+    margin: 0 auto; 
+    padding: 20px; 
+}
+
+/* --- HEADER COMPACTO --- */
 .header { 
     background-color: #a532b2; 
     color: white; 
@@ -22,6 +32,12 @@ body { font-family: 'Segoe UI', sans-serif; margin: 0; background-color: #f4f4f4
     gap: 10px;
 }
 
+.header-logo {
+    height: 100px;
+    width: auto;
+    object-fit: contain;
+    border-radius: 5px;
+}
 
 #main-title { 
     color: #e2f42a; 
@@ -30,11 +46,11 @@ body { font-family: 'Segoe UI', sans-serif; margin: 0; background-color: #f4f4f4
     line-height: 1;
     text-transform: uppercase;
     text-align: center;
-    flex-grow: 1; /* Hace que el título ocupe el centro */
+    flex-grow: 1;
 }
 
 #main-title span {
-    font-size: 1.4rem; /* "DE ELIANA" resaltado pero sin romper el header */
+    font-size: 1.4rem;
     display: block;
 }
 
@@ -62,37 +78,35 @@ body { font-family: 'Segoe UI', sans-serif; margin: 0; background-color: #f4f4f4
 }
 
 #btn-volver {
-    position: fixed;       /* Lo despega del flujo y lo deja fijo en la pantalla */
-    bottom: 20px;          /* Distancia desde la parte inferior */
-    left: 20px;            /* Distancia desde el borde izquierdo (podés cambiarlo a 'right' si preferís) */
-    z-index: 1000;         /* Se asegura de que flote POR ENCIMA de todas las tarjetas de productos */
-    
-    /* Tu estilo actual (redondeado, color llamativo, etc.) */
-    background-color: #ccff00; /* Tu verde/amarillo flúor actual */
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 1000;
+    background-color: #ccff00;
     color: #000;
     padding: 12px 20px;
     border: none;
-    border-radius: 50px;   /* Bien redondeado tipo cápsula */
+    border-radius: 50px;
     font-weight: bold;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Sombra para que "flote" de verdad */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
     cursor: pointer;
     transition: transform 0.2s ease;
 }
 
-/* Un pequeño efecto visual al pasar el mouse en PC */
 #btn-volver:hover {
     transform: scale(1.05);
 }
 
 /* --- GRILLAS --- */
 .grid-container { 
-    display: flex;             /* Cambiamos grid por flex para poder centrar */
-    justify-content: center;   /* ¡ESTO centra el botón en el medio de la pantalla! */
+    display: flex;
+    justify-content: center;
     align-items: center; 
-    flex-wrap: wrap;           /* Si sumás Electrónica o Stickers, se acomodan al lado o abajo */
+    flex-wrap: wrap;
     gap: 15px; 
     padding-top: 20px; 
 }
+
 .lista-productos-detalle { 
     display: grid; 
     grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); 
@@ -100,84 +114,100 @@ body { font-family: 'Segoe UI', sans-serif; margin: 0; background-color: #f4f4f4
 }
 
 /* --- TARJETAS --- */
-/*.product-card-rubro, .tarjeta-horizontal { 
-    background: white; border-radius: 12px; overflow: hidden; 
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: 0.3s;
-}
-.product-card-rubro:hover { transform: translateY(-5px); }
-.product-card-rubro img { width: 100%; height: 140px; object-fit: cover; }
-*/
-
-/* --- TARJETAS --- */
-/* Comparten el estilo base */
 .product-card-rubro, .tarjeta-horizontal { 
-    background: white; border-radius: 12px; overflow: hidden; 
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: 0.3s;
+    background: white; 
+    border-radius: 12px; 
+    overflow: hidden; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+    transition: 0.3s;
 }
 
-/* NUEVO: Le damos un ancho rectangular espectacular al botón del rubro */
 .product-card-rubro {
     width: 100%;
-    max-width: 450px; /* <--- Subí o bajá este número si lo querés más o menos ancho */
+    max-width: 450px;
 }
 
-.product-card-rubro:hover { transform: translateY(-5px); }
-.product-card-rubro img { width: 100%; height: 180px; object-fit: cover; } /* Subimos un poquito la altura para acompañar el ancho */
+.product-card-rubro:hover { 
+    transform: translateY(-5px); 
+}
 
+.product-card-rubro img { 
+    width: 100%; 
+    height: 180px; 
+    object-fit: cover; 
+}
 
 .overlay-rubro { 
-    background: rgba(0,0,0,0.5); color: white; padding: 10px; 
-    text-align: center; font-weight: bold; 
+    background: rgba(0,0,0,0.5); 
+    color: white; 
+    padding: 10px; 
+    text-align: center; 
+    font-weight: bold; 
 }
 
-/* 1. Contenedor de la tarjeta: centramos todo el texto */
 .tarjeta-horizontal {
-    position: relative; /* Necesario para ubicar el botón respecto a la tarjeta */
-    text-align: center; /* Centra el título h3 y el precio */
+    position: relative;
+    text-align: center;
     padding: 15px;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Alinea la imagen al centro */
+    align-items: center;
 }
 
-/* 2. Ajustamos los textos para quitar márgenes que sobran */
 .tarjeta-horizontal h3 {
     font-size: 14px;
-    margin-left: 0px;
-    margin-right: 0px;
-    margin-top: 10px;
-    margin-bottom: 0px;
-    padding: 0px;
-    width: 100%; /* Ocupa todo el ancho para centrarse bien */
+    margin: 10px 0 0 0;
+    padding: 0;
+    width: 100%;
 }
 
 .tarjeta-horizontal .precio {
-    margin-left: 0px;
-    margin-right: 0px;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    padding: 0px;
-    width: 100%; /* Ocupa todo el ancho para centrarse bien */
+    margin: 0;
+    padding: 0;
+    width: 100%;
 }
 
-/* 3. El botón (+) a la derecha y abajo */
 .tarjeta-horizontal .btn-add {
     position: absolute;
-    bottom: 15px; /* Espacio desde abajo */
-    right: 15px;  /* ¡Aquí es donde lo movemos a la derecha! */
-    margin: 0;    /* Quitamos márgenes automáticos */
+    bottom: 15px;
+    right: 15px;
+    margin: 0;
 }
 
-.tarjeta-horizontal img { width: 100%; height: 200px; object-fit: contain; }
-.precio { color: #a532b2; font-weight: bold; font-size: 1.2rem; }
-.btn-add { background: #e2f42a; border: none; width: 30px; height: 30px; border-radius: 50%; cursor: pointer; font-weight: bolder; }
+.tarjeta-horizontal img { 
+    width: 100%; 
+    height: 200px; 
+    object-fit: contain; 
+}
 
-/* --- MODALES --- */
-/* --- MODALES (Inspirado en tu referencia) --- */
+.btn-add { 
+    background: #e2f42a; 
+    border: none; 
+    width: 30px; 
+    height: 30px; 
+    border-radius: 50%; 
+    cursor: pointer; 
+    font-weight: bolder; 
+}
 
-/* --- MODALES --- */
+/* --- PRECIO Y ESTILO DEL SIGNO PESO --- */
+.precio {
+    color: #a532b2;
+    font-weight: bold;
+    font-size: 18px !important;
+    display: inline-block;
+    letter-spacing: 0.5px;
+}
+
+.precio::first-letter {
+    font-size: 0.7em !important;
+    font-weight: normal;
+    margin-right: 4px;
+}
+
+/* --- MODAL DEL CARRITO --- */
 .modal { 
-    display: none;            /* <--- ESTO LO MANTIENE OCULTO AL EMPEZAR */
+    display: none;
     position: fixed; 
     z-index: 3000; 
     left: 0; 
@@ -185,27 +215,10 @@ body { font-family: 'Segoe UI', sans-serif; margin: 0; background-color: #f4f4f4
     width: 100vw;  
     height: 100vh; 
     background: rgba(0,0,0,0.8); 
-    
-    /* Preparamos el centrado */
     justify-content: center;  
     align-items: center;      
 }
 
-.modal-img {
-    display: none; 
-    position: fixed; 
-    z-index: 3000; /* Asegurarnos que esté por encima de TODO */
-    left: 0; 
-    top: 0; 
-    width: 100vw; 
-    height: 100vh; 
-    background: rgba(0,0,0,0.9); /* Fondo negro traslúcido para que resalte la foto */
-    justify-content: center; /* Centra horizontalmente la imagen */
-    align-items: center; /* Centra verticalmente la imagen */
-}
-
-/* El contenido del carrito */
-/* Este es el recuadro blanco del carrito */
 .modal-content { 
     background: white; 
     padding: 20px; 
@@ -213,94 +226,250 @@ body { font-family: 'Segoe UI', sans-serif; margin: 0; background-color: #f4f4f4
     width: 90%; 
     max-width: 400px; 
     position: relative; 
-    box-shadow: 0 5px 20px rgba(0,0,0,0.3); /* Un toque de sombra para que resalte */
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
 }
 
-/* NUEVO: La imagen de zoom simplificada */
-/* --- MODAL DE IMAGEN (Zoom) --- */
-#modal-imagen {
-    display: none; 
-    position: fixed; 
-    z-index: 4000; 
-    left: 0; 
-    top: 0; 
-    width: 100vw; 
-    height: 100vh; 
-    background: rgba(0,0,0,0.9); 
-    
-    /* ESTO ES LO QUE CENTRA LA IMAGEN */
-    justify-content: center; 
-    align-items: center; 
-}
-
-/* La imagen propiamente dicha */
-#img-agrandada {
-    margin: auto;
-    display: block;
-    max-width: 90%; 
-    max-height: 85vh; 
-    object-fit: contain; 
-    border-radius: 15px; 
-    border: 5px solid white; 
-    box-shadow: 0 0 20px rgba(0,0,0,0.5);
-}
-
-/* --- ESTILOS PARA LA 'X' DE CIERRE DEL VISUALIZADOR --- */
-.close-img-btn {
-    position: absolute;
-    top: 15px;      /* Distancia desde arriba */
-    right: 25px;    /* Distancia desde la derecha */
-    color: #f1f1f1;  /* Color blanco-grisáceo */
-    font-size: 40px; /* Tamaño grande y claro */
+#btn-whatsapp {
+    background-color: #25d366;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
     font-weight: bold;
     cursor: pointer;
-    z-index: 3001;  /* Un número más alto que la imagen misma */
-    transition: 0.3s; /* Efecto suave de hover */
+    font-family: inherit;
+    margin-top: 10px;
+    transition: background 0.3s ease;
 }
 
-/* Efecto al pasar el mouse (para PC) */
+#btn-whatsapp:hover {
+    background-color: #128c7e;
+}
+
+.btn-continue {
+    background: none;
+    border: 1px solid #ccc;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    margin-left: 10px;
+    color: #666;
+}
+
+/* --- MODAL Y TARJETA DE ZOOM (CORREGIDO) --- */
+#modal-imagen,
+.modal-img {
+    display: none;
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(4px);
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.modal-zoom-contenido {
+    background-color: #ffffff;
+    padding: 12px 14px;
+    border-radius: 18px;
+    width: fit-content;
+    max-width: 400px;         /* 👈 ¡ACÁ LO ENANGOSTAMOS! (Antes estaba en 95vw) */
+    height: 88vh;             /* Le damos un toque de aire vertical impecable */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    box-sizing: border-box;
+}
+
+.close-img-btn {
+    position: absolute;
+    top: 8px;
+    right: 14px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+    z-index: 10;
+    transition: 0.3s;
+}
+
 .close-img-btn:hover {
-    color: #bbb;
-    transform: scale(1.1); /* Se agranda un poquito */
+    color: #888;
+    transform: scale(1.1);
 }
 
-/* Ajustes para que se vea bien en celular (pantallas pequeñas) */
-@media only screen and (max-width: 700px){
-    .close-img-btn {
-        font-size: 35px;
-        top: 10px;
-        right: 20px;
-    }
+/* Envoltorio flexible de la imagen */
+.modal-img-container {
+    flex: 1;                  /* Toma todo el alto dinámico disponible */
+    min-height: 0;            /* Permite que la imagen se adapte dinámicamente */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 }
 
-/* Ocultamos el texto amarillo definitivamente */
+#img-agrandada {
+    max-width: 100%;
+    max-height: 100%;         /* Llena el contenedor respetando al texto */
+    object-fit: contain;      /* Foto 100% visible sin cortarse */
+    border-radius: 12px;
+    display: block;
+}
+
+/* Pie con Nombre, Precio y Botón + siempre visibles */
+.zoom-info-card {
+    flex-shrink: 0;           /* Bloquea la altura del pie para que NUNCA desaparezca */
+    width: 100%;
+    margin-top: 8px;
+    padding-top: 6px;
+    border-top: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+.zoom-textos {
+    text-align: left;
+    max-width: 75%;
+}
+
+.zoom-textos h3 {
+    margin: 0 0 2px 0;
+    font-size: 1rem;
+    color: #222;
+    font-weight: bold;
+}
+
+.zoom-textos .precio {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #a532b2;
+}
+
 #caption-imagen {
     display: none !important;
 }
 
+/* --- SUB-MENÚ DE FILTROS --- */
+.sub-rubros {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; 
+    gap: 20px;
+    padding: 30px 15px;
+    background-color: #f4f4f4;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.btn-sub {
+    background-color: white;
+    color: #333333;
+    border: none;
+    width: 100%;
+    max-width: 150px;
+    height: 60px;
+    border-radius: 40px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-sub:hover, .btn-sub:active {
+    background-color: #a532b2;
+    color: white;
+    transform: translateY(-5px);
+}
+
+.btn-sub-activo {
+    background-color: #ccff00 !important;
+    color: #000000 !important;
+    font-weight: bold;
+    border: 2px solid #b3e600 !important;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.btn-sub-inactivo {
+    background-color: #e0e0e0 !important;
+    color: #a0a0a0 !important;
+    border: 1px solid #d3d3d3 !important;
+    cursor: not-allowed !important;
+    pointer-events: none;
+    box-shadow: none !important;
+    opacity: 0.7;
+}
+
+/* --- TARJETAS BLOQUEADAS / PRÓXIMAMENTE --- */
+.rubro-bloqueado {
+    position: relative;
+    cursor: not-allowed !important;
+    pointer-events: none;
+}
+
+.rubro-bloqueado img {
+    filter: grayscale(100%) opacity(0.5);
+    transition: all 0.3s ease;
+}
+
+.rubro-bloqueado::after {
+    content: "PRÓXIMAMENTE";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.85);
+    color: #ccff00;
+    padding: 8px 14px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    border-radius: 8px;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+    z-index: 10;
+}
+
 /* --- FOOTER --- */
-/* --- FOOTER COMPACTO --- */
 .main-footer { 
     background: #a532b2; 
     color: white; 
-    padding: 15px 10px; /* Reducimos el aire arriba y abajo */
+    padding: 15px 10px; 
     text-align: center; 
-    margin-top: 30px; /* Menos separación con los productos */
+    margin-top: 30px; 
 }
 
 .main-footer h3 { 
     color: #e2f42a; 
-    margin: 0 0 5px 0; /* Casi sin margen para que no estire la caja */
+    margin: 0 0 5px 0; 
     font-size: 1.1rem; 
 }
 
 .main-footer p { 
-    margin: 3px 0; /* Pegamos más las líneas de dirección y teléfono */
+    margin: 3px 0; 
     font-size: 0.85rem; 
 }
 
 .social-links { 
-    font-size: 1.2rem; /* Iconos un poquito más chicos */
+    font-size: 1.2rem; 
     margin: 8px 0; 
     display: flex; 
     justify-content: center; 
@@ -313,196 +482,22 @@ body { font-family: 'Segoe UI', sans-serif; margin: 0; background-color: #f4f4f4
     margin-top: 10px; 
 }
 
-/* --- ESTILO BOTÓN WHATSAPP EN MODAL (Corregido por ID) --- */
-#btn-whatsapp {
-    background-color: #25d366; /* Verde oficial WhatsApp */
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 25px; /* Más redondeado, estilo burbuja */
-    font-weight: bold;
-    cursor: pointer;
-    font-family: inherit;
-    margin-top: 10px;
-    transition: background 0.3s ease;
-}
+/* --- RESPONSIVE MOBILE --- */
+@media (max-width: 700px) {
+    .close-img-btn {
+        font-size: 26px;
+        top: 6px;
+        right: 12px;
+    }
 
-#btn-whatsapp:hover {
-    background-color: #128c7e;
-}
-
-/* Botón de seguir comprando */
-.btn-continue {
-    background: none;
-    border: 1px solid #ccc;
-    padding: 10px 20px;
-    border-radius: 25px;
-    cursor: pointer;
-    margin-left: 10px;
-    color: #666;
-}
-
-
-/* --- SUB-MENÚ DE FILTROS (TRANSFORMADO EN MOSAICO) --- */
-.sub-rubros {
-    display: none; /* Se activa por JavaScript cuando entrás a Textil */
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap; 
-    gap: 20px;       /* Un poco más de espacio entre las tarjetas */
-    padding: 30px 15px;
-    background-color: #f4f4f4; /* Fondo gris claro igual al de la tienda */
-    width: 100%;
-    box-sizing: border-box;
-}
-
-/* Transformamos los botones simples en tarjetas imponentes */
-.btn-sub {
-    background-color: white; /* Tarjeta blanca como las demás */
-    color: #333333;          /* Texto oscuro legible */
-    border: none;
-    width: 100%;
-    max-width: 150px;       /* Tamaño ideal para que entren varios en fila */
-    height: 60px;          /* Altura para que parezcan cajas */
-    border-radius: 40px;     /* Esquinas redondeadas idénticas a las del rubro */
-    font-weight: bold;
-    font-size: 1.2rem;       /* Texto más grande y claro */
-    text-transform: uppercase;
-    cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Misma sombra flotante */
-    transition: all 0.3s ease;
-    
-    /* Centramos el texto dentro del mosaico */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Efecto al pasar el mouse por encima del mosaico */
-.btn-sub:hover, .btn-sub:active {
-    background-color: #a532b2; /* Se pinta de violeta al seleccionarlo */
-    color: white;
-    transform: translateY(-5px); /* Se eleva un poquito igual que el catálogo */
-}
-
-/* Ajuste fino para que en celulares se sigan viendo como cajas cómodas */
-@media (max-width: 480px) {
     .sub-rubros {
         padding: 20px 10px;
         gap: 15px;
     }
+
     .btn-sub {
-        max-width: 140px;  /* Entran de a dos por fila en la pantalla del celular */
+        max-width: 140px;
         height: 50px;
         font-size: 0.95rem;
     }
-}
-
-/* --- ESTILO PARA EL LOGO DEL HEADER --- */
-.header-logo {
-    height: 100px;       /* <--- Altura del logo para que quede compacto en el renglón */
-    width: auto;        /* Mantiene la proporción de la imagen sin deformarla */
-    object-fit: contain;
-    border-radius: 5px; /* Un pequeño redondeado por si tu logo es cuadrado */
-}
-
-/* --- BOTÓN SUBRUBRO ACTIVO (Verde Limón) --- */
-.btn-sub-activo {
-    background-color: #ccff00 !important; /* Verde limón idéntico al carrito */
-    color: #000000 !important;            /* Texto negro para buena lectura */
-    font-weight: bold;
-    border: 2px solid #b3e600 !important;
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-/* --- BOTONES SUBRUBROS INACTIVOS (Grisados) --- */
-.btn-sub-inactivo {
-    background-color: #e0e0e0 !important; /* Fondo gris apagado */
-    color: #a0a0a0 !important;            /* Texto gris claro */
-    border: 1px solid #d3d3d3 !important;
-    cursor: not-allowed !important;       /* Cursor de prohibido */
-    pointer-events: none;                 /* Desactiva clics */
-    box-shadow: none !important;
-    opacity: 0.7;
-}
-
-/* --- TRUCO CSS PARA ESTILIZAR EL SIGNO PESO SIN TOCAR EL JS --- */
-.precio {
-    font-size: 0; /* Oculta temporalmente el texto base para rearmarlo */
-}
-
-/* --- LIMPIEZA Y AJUSTE DEL SIGNO PESO ORIGINAL --- */
-.precio {
-    font-size: 18px !important;   /* El tamaño del precio que más te guste */
-    font-weight: bold;
-    display: inline-block;
-    letter-spacing: 0.5px;        /* Un toque de aire general */
-}
-
-/* Este truco agarra ÚNICAMENTE el primer caracter (el $) que ya dibuja tu JS */
-.precio::first-letter {
-    font-size: 0.7em !important;  /* Lo achica un 30% automáticamente */
-    font-weight: normal;          /* Le saca el grueso para que estilice */
-    margin-right: 4px;            /* ¡Y acá le da el espacio exacto con el número! */
-}
-
-/* --- TARJETAS DE RUBROS EN EXPECTATIVA (CORREGIDO) --- */
-.rubro-bloqueado {
-    position: relative;
-    cursor: not-allowed !important;
-    pointer-events: none; /* Desactiva los clics por completo */
-}
-
-/* Ponemos la foto del rubro en blanco y negro y traslúcida */
-.rubro-bloqueado img {
-    filter: grayscale(100%) opacity(0.5);
-    transition: all 0.3s ease;
-}
-
-/* Cartelito flotante con el verde flúor de tu tienda */
-.rubro-bloqueado::after {
-    content: "PRÓXIMAMENTE";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: rgba(0, 0, 0, 0.85);
-    color: #ccff00; /* Tu hermoso verde limón */
-    padding: 8px 14px;
-    font-size: 0.85rem;
-    font-weight: bold;
-    border-radius: 8px;
-    letter-spacing: 1px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
-    z-index: 10;
-}
-
-
-/* --- TARJETAS DE RUBROS EN EXPECTATIVA --- */
-.rubro-bloqueado {
-    position: relative;
-    cursor: not-allowed !important;
-    pointer-events: none; /* 👈 Esto desactiva el click por completo */
-}
-
-.rubro-bloqueado img {
-    filter: grayscale(100%) opacity(0.5); /* Pone la foto gris */
-}
-
-.rubro-bloqueado::after {
-    content: "PRÓXIMAMENTE";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: rgba(0, 0, 0, 0.85);
-    color: #ccff00; /* Tu verde flúor */
-    padding: 8px 14px;
-    font-size: 0.85rem;
-    font-weight: bold;
-    border-radius: 8px;
-    letter-spacing: 1px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
-    z-index: 10;
 }
