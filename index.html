@@ -13,15 +13,19 @@
     <header class="header">
         <div class="header-content">
             <img src="img/LOGO_REDONDO.png" alt="Logo El Cielito" class="header-logo">
-            <button id="btn-volver" onclick="mostrarRubros()" class="btn-volver-estilo" style="display: none;">
-                <i class="fas fa-arrow-left"></i> VOLVER
-            </button>
 
             <h1 id="main-title">EL CIELITO <br> <span>DE ELIANA</span></h1>
-            <button onclick="abrirModal()" class="btn-cart-header">
-                <i class="fas fa-shopping-cart"></i>
-                <span id="cart-counter">0 productos</span>
-            </button>
+
+            <!-- Contenedor alineado a la derecha para Carrito y Volver -->
+            <div class="header-acciones">
+                <button onclick="abrirModal()" class="btn-cart-header">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span id="cart-counter">0 productos</span>
+                </button>
+                <button id="btn-volver" onclick="mostrarRubros()" class="btn-volver-estilo" style="display: none;">
+                    <i class="fas fa-arrow-left"></i> VOLVER
+                </button>
+            </div>
         </div>
 
         <div class="search-container">
@@ -42,6 +46,7 @@
         <section id="productos-grid" class="grid-container"></section>
     </main>
 
+    <!-- MODAL DEL CARRITO -->
     <div id="modal-carrito" class="modal">
         <div class="modal-content">
             <span class="close" onclick="cerrarModal()">&times;</span>
@@ -62,16 +67,15 @@
                     style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ccc; box-sizing: border-box;">
             </div>
             <button id="btn-whatsapp" onclick="enviarWhatsApp()">🚀 Enviar Pedido por WhatsApp</button>
-            <button onclick="cerrarModal()">Continuar comprando</button>
+            <button onclick="cerrarModal()" class="btn-continue">Continuar comprando</button>
         </div>
     </div>
 
-    <!-- MODAL DE ZOOM CON DETALLE DE PRODUCTO Y BOTÓN MAS -->
+    <!-- MODAL DE ZOOM CON DETALLE DE PRODUCTO -->
     <div id="modal-imagen" class="modal-img" onclick="cerrarImagen(event)">
         <div class="modal-zoom-contenido" onclick="event.stopPropagation()">
             <span class="close-img-btn" onclick="cerrarImagen(event)">&times;</span>
 
-            <!-- Contenedor que maneja el espacio de la imagen -->
             <div class="modal-img-container">
                 <img id="img-agrandada" src="" alt="Producto Agrandado">
             </div>
@@ -81,7 +85,11 @@
                     <h3 id="zoom-titulo">Nombre del Producto</h3>
                     <p id="zoom-precio" class="precio">$0</p>
                 </div>
-                <button id="zoom-btn-add" class="btn-add">+</button>
+
+                <div class="zoom-action-container">
+                    <span id="mensaje-confirmacion" class="mensaje-agregado">¡Agregado al carrito!</span>
+                    <button id="zoom-btn-add" class="btn-add">+</button>
+                </div>
             </div>
         </div>
     </div>
@@ -94,7 +102,7 @@
             <div class="social-links">
                 <i class="fab fa-instagram"></i> <i class="fab fa-facebook"></i>
             </div>
-            <p class="copyright">© 2026 - Catlog design</p>
+            <p class="copyright">© 2026 - Catalog design</p>
         </div>
     </footer>
 

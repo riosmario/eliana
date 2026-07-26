@@ -33,7 +33,7 @@ body {
 }
 
 .header-logo {
-    height: 100px;
+    height: 75px;
     width: auto;
     object-fit: contain;
     border-radius: 5px;
@@ -50,8 +50,47 @@ body {
 }
 
 #main-title span {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     display: block;
+}
+
+/* Agrupador para Carrito y Volver a la derecha */
+.header-acciones {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+}
+
+/* --- BOTONES DEL HEADER --- */
+.btn-cart-header {
+    background-color: #e2f42a;
+    color: #a532b2;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    white-space: nowrap;
+    font-size: 0.85rem;
+}
+
+#btn-volver {
+    background-color: #ccff00;
+    color: #000;
+    padding: 5px 12px;
+    border: none;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.8rem;
+    cursor: pointer;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease;
+    white-space: nowrap;
+}
+
+#btn-volver:hover {
+    transform: scale(1.05);
 }
 
 #buscador { 
@@ -63,38 +102,6 @@ body {
     margin: 10px auto 0;
     display: block;
     outline: none;
-}
-
-/* --- BOTONES DEL HEADER --- */
-.btn-cart-header {
-    background-color: #e2f42a;
-    color: #a532b2;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 20px;
-    font-weight: bold;
-    cursor: pointer;
-    white-space: nowrap;
-}
-
-#btn-volver {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    z-index: 1000;
-    background-color: #ccff00;
-    color: #000;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 50px;
-    font-weight: bold;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-    cursor: pointer;
-    transition: transform 0.2s ease;
-}
-
-#btn-volver:hover {
-    transform: scale(1.05);
 }
 
 /* --- GRILLAS --- */
@@ -183,26 +190,25 @@ body {
 .btn-add { 
     background: #e2f42a; 
     border: none; 
-    width: 30px; 
-    height: 30px; 
+    width: 32px; 
+    height: 32px; 
     border-radius: 50%; 
     cursor: pointer; 
-    font-weight: bolder; 
+    font-weight: bold; 
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
 }
 
-/* --- PRECIO Y ESTILO DEL SIGNO PESO --- */
+/* --- PRECIOS --- */
 .precio {
     color: #a532b2;
     font-weight: bold;
     font-size: 18px !important;
     display: inline-block;
     letter-spacing: 0.5px;
-}
-
-.precio::first-letter {
-    font-size: 0.7em !important;
-    font-weight: normal;
-    margin-right: 4px;
 }
 
 /* --- MODAL DEL CARRITO --- */
@@ -240,6 +246,7 @@ body {
     font-family: inherit;
     margin-top: 10px;
     transition: background 0.3s ease;
+    width: 100%;
 }
 
 #btn-whatsapp:hover {
@@ -252,11 +259,12 @@ body {
     padding: 10px 20px;
     border-radius: 25px;
     cursor: pointer;
-    margin-left: 10px;
+    margin-top: 8px;
     color: #666;
+    width: 100%;
 }
 
-/* --- MODAL Y TARJETA DE ZOOM (CORREGIDO) --- */
+/* --- MODAL Y TARJETA DE ZOOM --- */
 #modal-imagen,
 .modal-img {
     display: none;
@@ -276,11 +284,11 @@ body {
 
 .modal-zoom-contenido {
     background-color: #ffffff;
-    padding: 12px 14px;
+    padding: 14px;
     border-radius: 18px;
-    width: fit-content;
-    max-width: 400px;         /* 👈 ¡ACÁ LO ENANGOSTAMOS! (Antes estaba en 95vw) */
-    height: 88vh;             /* Le damos un toque de aire vertical impecable */
+    width: 90%;
+    max-width: 380px;
+    max-height: 85vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -292,25 +300,18 @@ body {
 
 .close-img-btn {
     position: absolute;
-    top: 8px;
-    right: 14px;
+    top: 6px;
+    right: 12px;
     font-size: 28px;
     font-weight: bold;
     color: #333;
     cursor: pointer;
     z-index: 10;
-    transition: 0.3s;
 }
 
-.close-img-btn:hover {
-    color: #888;
-    transform: scale(1.1);
-}
-
-/* Envoltorio flexible de la imagen */
 .modal-img-container {
-    flex: 1;                  /* Toma todo el alto dinámico disponible */
-    min-height: 0;            /* Permite que la imagen se adapte dinámicamente */
+    flex: 1;
+    min-height: 0;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -320,18 +321,17 @@ body {
 
 #img-agrandada {
     max-width: 100%;
-    max-height: 100%;         /* Llena el contenedor respetando al texto */
-    object-fit: contain;      /* Foto 100% visible sin cortarse */
+    max-height: 100%;
+    object-fit: contain;
     border-radius: 12px;
     display: block;
 }
 
-/* Pie con Nombre, Precio y Botón + siempre visibles */
 .zoom-info-card {
-    flex-shrink: 0;           /* Bloquea la altura del pie para que NUNCA desaparezca */
+    flex-shrink: 0;
     width: 100%;
-    margin-top: 8px;
-    padding-top: 6px;
+    margin-top: 10px;
+    padding-top: 8px;
     border-top: 1px solid #eee;
     display: flex;
     align-items: center;
@@ -341,12 +341,12 @@ body {
 
 .zoom-textos {
     text-align: left;
-    max-width: 75%;
+    max-width: 60%;
 }
 
 .zoom-textos h3 {
     margin: 0 0 2px 0;
-    font-size: 1rem;
+    font-size: 0.95rem;
     color: #222;
     font-weight: bold;
 }
@@ -358,8 +358,24 @@ body {
     color: #a532b2;
 }
 
-#caption-imagen {
-    display: none !important;
+.zoom-action-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.mensaje-agregado {
+    display: none;
+    color: #25d366;
+    font-weight: bold;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateX(5px); }
+    to { opacity: 1; transform: translateX(0); }
 }
 
 /* --- SUB-MENÚ DE FILTROS --- */
@@ -368,8 +384,8 @@ body {
     justify-content: center;
     align-items: center;
     flex-wrap: wrap; 
-    gap: 20px;
-    padding: 30px 15px;
+    gap: 15px;
+    padding: 20px 15px;
     background-color: #f4f4f4;
     width: 100%;
     box-sizing: border-box;
@@ -381,10 +397,10 @@ body {
     border: none;
     width: 100%;
     max-width: 150px;
-    height: 60px;
+    height: 50px;
     border-radius: 40px;
     font-weight: bold;
-    font-size: 1.2rem;
+    font-size: 1rem;
     text-transform: uppercase;
     cursor: pointer;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
@@ -394,19 +410,10 @@ body {
     align-items: center;
 }
 
-.btn-sub:hover, .btn-sub:active {
-    background-color: #a532b2;
-    color: white;
-    transform: translateY(-5px);
-}
-
 .btn-sub-activo {
     background-color: #ccff00 !important;
     color: #000000 !important;
-    font-weight: bold;
     border: 2px solid #b3e600 !important;
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
 .btn-sub-inactivo {
@@ -415,11 +422,10 @@ body {
     border: 1px solid #d3d3d3 !important;
     cursor: not-allowed !important;
     pointer-events: none;
-    box-shadow: none !important;
     opacity: 0.7;
 }
 
-/* --- TARJETAS BLOQUEADAS / PRÓXIMAMENTE --- */
+/* --- RUBROS BLOQUEADOS --- */
 .rubro-bloqueado {
     position: relative;
     cursor: not-allowed !important;
@@ -428,7 +434,6 @@ body {
 
 .rubro-bloqueado img {
     filter: grayscale(100%) opacity(0.5);
-    transition: all 0.3s ease;
 }
 
 .rubro-bloqueado::after {
@@ -444,8 +449,6 @@ body {
     font-weight: bold;
     border-radius: 8px;
     letter-spacing: 1px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
-    z-index: 10;
 }
 
 /* --- FOOTER --- */
@@ -484,20 +487,21 @@ body {
 
 /* --- RESPONSIVE MOBILE --- */
 @media (max-width: 700px) {
-    .close-img-btn {
-        font-size: 26px;
-        top: 6px;
-        right: 12px;
-    }
-
-    .sub-rubros {
-        padding: 20px 10px;
-        gap: 15px;
-    }
-
-    .btn-sub {
-        max-width: 140px;
-        height: 50px;
+    #main-title {
         font-size: 0.95rem;
+    }
+    #main-title span {
+        font-size: 1.1rem;
+    }
+    .header-logo {
+        height: 60px;
+    }
+    .btn-cart-header {
+        font-size: 0.75rem;
+        padding: 5px 10px;
+    }
+    #btn-volver {
+        font-size: 0.75rem;
+        padding: 4px 10px;
     }
 }

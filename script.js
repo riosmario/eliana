@@ -1,6 +1,7 @@
 let carrito = [];
+let productoActualZoom = null; // Guarda temporalmente el producto que se está viendo en Zoom
 
-// 2. MOSTRAR RUBROS (Corregido: Bloqueo automático por nombre exacto)
+// 2. MOSTRAR RUBROS (Bloqueo automático por nombre exacto)
 function mostrarRubros() {
     const contenedor = document.getElementById("productos-grid");
     const btnVolver = document.getElementById("btn-volver");
@@ -30,15 +31,13 @@ function mostrarRubros() {
         const rubro = baseDeDatos[nombre];
         const div = document.createElement("div");
 
-        // Convertimos el nombre a mayúsculas para evitar problemas con tildes o minúsculas
         const nombreMayus = nombre.toUpperCase();
 
-        // 🔍 REVISIÓN DE NOMBRE: Si el rubro incluye estas palabras, lo desactiva automáticamente
         if (nombreMayus.includes("ESCOLARES") || nombreMayus.includes("PELUCHES") || nombreMayus.includes("BAZAR")) {
-            div.className = "product-card-rubro rubro-bloqueado"; // Aplica los estilos del cartel
+            div.className = "product-card-rubro rubro-bloqueado";
         } else {
             div.className = "product-card-rubro";
-            div.onclick = () => mostrarProductos(nombre); // Solo Textil (y los activos) van a reaccionar al click
+            div.onclick = () => mostrarProductos(nombre);
         }
 
         div.innerHTML = `
@@ -50,7 +49,6 @@ function mostrarRubros() {
 }
 
 // 3. MOSTRAR PRODUCTOS
-// 3. MOSTRAR PRODUCTOS (Corregido con datos para el zoom)
 function mostrarProductos(nombreRubro) {
     console.log("Cargando rubro:", nombreRubro);
 
@@ -87,12 +85,13 @@ function mostrarProductos(nombreRubro) {
         const tarjeta = document.createElement("div");
         tarjeta.className = "tarjeta-horizontal";
 
-        // ✨ AQUÍ ESTÁ EL CAMBIO EN LA IMAGEN:
+        const nombreLimpio = p.nombre.replace(/'/g, "\\'");
+
         tarjeta.innerHTML = `
-            <img src="${p.img}" onclick="agrandarImagen('${p.img}', '${p.nombre}', ${p.precio})">
+            <img src="${p.img}" onclick="agrandarImagen('${p.img}', '${nombreLimpio}', ${p.precio})">
             <h3>${p.nombre}</h3>
             <p class="precio">$${p.precio}</p>
-            <button class="btn-add" onclick="agregarAlCarrito('${p.nombre}', ${p.precio}, event)">+</button>
+            <button class="btn-add" onclick="agregarAlCarrito('${nombreLimpio}', ${p.precio}, event)">+</button>
         `;
         contenedor.appendChild(tarjeta);
     });
@@ -100,7 +99,7 @@ function mostrarProductos(nombreRubro) {
     window.scrollTo(0, 0);
 }
 
-// FILTRAR SUB-CATEGORÍAS (Corregido con datos para el zoom)
+// FILTRAR SUB-CATEGORÍAS
 function filtrarPorSub(subCategoria, elementoClicado) {
     const contenedor = document.getElementById("productos-grid");
     const todosLosBotones = document.querySelectorAll('.btn-sub');
@@ -138,15 +137,15 @@ function filtrarPorSub(subCategoria, elementoClicado) {
     productosFiltrados.forEach(p => {
         const tarjeta = document.createElement("div");
         tarjeta.className = "tarjeta-horizontal";
+        const nombreLimpio = p.nombre.replace(/'/g, "\\'");
 
-        // ✨ AQUÍ ESTÁ EL CAMBIO EN LA IMAGEN:
         tarjeta.innerHTML = `
-            <img src="${p.img}" onclick="agrandarImagen('${p.img}', '${p.nombre}', ${p.precio})">
+            <img src="${p.img}" onclick="agrandarImagen('${p.img}', '${nombreLimpio}', ${p.precio})">
             <div class="info-producto">
                 <h3>${p.nombre}</h3>
                 <p class="precio">$${p.precio}</p>
             </div>
-            <button class="btn-add" onclick="agregarAlCarrito('${p.nombre}', ${p.precio}, event)">+</button>
+            <button class="btn-add" onclick="agregarAlCarrito('${nombreLimpio}', ${p.precio}, event)">+</button>
         `;
         contenedor.appendChild(tarjeta);
     });
@@ -161,16 +160,19 @@ function agregarAlCarrito(nombre, precio, event) {
         contador.innerText = `${carrito.length} productos`;
     }
 
-    const cartel = document.createElement("span");
-    cartel.innerText = "¡Agregado!";
-    cartel.className = "aviso-agregado";
+    if (event && event.currentTarget && event.currentTarget.classList.contains('btn-add')) {
+        const cartel = document.createElement("span");
+        cartel.innerText = "¡Agregado!";
+        cartel.className = "aviso-agregado";
 
-    const boton = event.currentTarget || event.target;
-    const contenedorPadre = boton.parentElement;
-    contenedorPadre.style.position = "relative";
-    contenedorPadre.appendChild(cartel);
-
-    setTimeout(() => { cartel.remove(); }, 1500);
+        const boton = event.currentTarget;
+        const contenedorPadre = boton.parentElement;
+        if (contenedorPadre && !contenedorPadre.classList.contains('zoom-action-container')) {
+            contenedorPadre.style.position = "relative";
+            contenedorPadre.appendChild(cartel);
+            setTimeout(() => { cartel.remove(); }, 1500);
+        }
+    }
 }
 
 function eliminarDelCarrito(index) {
@@ -265,34 +267,45 @@ function enviarWhatsApp() {
 
     carrito = [];
     const contador = document.getElementById('cart-counter');
-    if (contador) contador.innerText = "0";
+    if (contador) contador.innerText = "0 productos";
     document.getElementById('nombre-cliente').value = "";
     document.getElementById('direccion-cliente').value = "";
 
     cerrarModal();
 }
 
-// 6. IMÁGENES
-// AGGRANDAR IMAGEN (Zoom con datos dinámicos)
+// 6. IMÁGENES Y ZOOM
 function agrandarImagen(src, nombre, precio) {
     const modal = document.getElementById("modal-imagen");
     const imgContenido = document.getElementById("img-agrandada");
     const titulo = document.getElementById("zoom-titulo");
     const precioTxt = document.getElementById("zoom-precio");
     const btnAdd = document.getElementById("zoom-btn-add");
+    const mensaje = document.getElementById('mensaje-confirmacion');
+
+    productoActualZoom = { nombre, precio };
 
     if (modal && imgContenido) {
         imgContenido.src = src;
-        
-        // Carga los textos correctos que vienen de la tarjeta
+
+        if (mensaje) mensaje.style.display = 'none';
         if (titulo) titulo.innerText = nombre || "Producto";
-        if (precioTxt) precioTxt.innerText = `$${precio ? precio.toLocaleString() : 0}`;
-        
-        // Asigna la acción de sumar al carrito al botón "+" del zoom
+        if (precioTxt) precioTxt.innerText = `$${precio ? precio : 0}`;
+
         if (btnAdd) {
             btnAdd.onclick = (event) => {
-                agregarAlCarrito(nombre, precio, event);
-                modal.style.display = "none"; // Cierra la imagen al agregar
+                event.stopPropagation();
+                
+                if (productoActualZoom) {
+                    agregarAlCarrito(productoActualZoom.nombre, productoActualZoom.precio, event);
+                }
+
+                if (mensaje) {
+                    mensaje.style.display = 'inline-block';
+                    setTimeout(() => {
+                        mensaje.style.display = 'none';
+                    }, 2000);
+                }
             };
         }
 
@@ -308,7 +321,6 @@ function cerrarImagen(event) {
 }
 
 // 7. FUNCIÓN DE BÚSQUEDA
-// BUSCADOR (Corregido con datos para el zoom)
 function buscarProductos() {
     const input = document.getElementById('buscador');
     const filtro = input.value.toLowerCase();
@@ -329,13 +341,13 @@ function buscarProductos() {
             if (p.nombre.toLowerCase().includes(filtro)) {
                 const tarjeta = document.createElement("div");
                 tarjeta.className = "tarjeta-horizontal";
-                
-                // ✨ AQUÍ ESTÁ EL CAMBIO EN LA IMAGEN:
+                const nombreLimpio = p.nombre.replace(/'/g, "\\'");
+
                 tarjeta.innerHTML = `
-                    <img src="${p.img}" onclick="agrandarImagen('${p.img}', '${p.nombre}', ${p.precio})">
+                    <img src="${p.img}" onclick="agrandarImagen('${p.img}', '${nombreLimpio}', ${p.precio})">
                     <h3>${p.nombre}</h3>
                     <p class="precio">$${p.precio}</p>
-                    <button class="btn-add" onclick="agregarAlCarrito('${p.nombre}', ${p.precio}, event)">+</button>
+                    <button class="btn-add" onclick="agregarAlCarrito('${nombreLimpio}', ${p.precio}, event)">+</button>
                 `;
                 contenedor.appendChild(tarjeta);
             }
