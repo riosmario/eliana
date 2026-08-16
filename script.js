@@ -194,7 +194,8 @@ function abrirModal() {
 
     if (!modal || !lista) return;
 
-    modal.style.display = "flex";
+    // Fuerza la visibilidad del modal ignorando la regla !important del CSS
+    modal.style.setProperty("display", "flex", "important");
     lista.innerHTML = '';
     let totalAcumulado = 0;
 
@@ -229,7 +230,9 @@ function abrirModal() {
 
 function cerrarModal() {
     const modal = document.getElementById('modal-carrito');
-    if (modal) modal.style.display = "none";
+    if (modal) {
+        modal.style.setProperty("display", "none", "important");
+    }
 }
 
 function enviarWhatsApp() {
@@ -309,14 +312,15 @@ function agrandarImagen(src, nombre, precio) {
             };
         }
 
-        modal.style.display = "flex";
+        // Fuerza la visibilidad del modal del zoom ignorando el !important del CSS
+        modal.style.setProperty("display", "flex", "important");
     }
 }
 
 function cerrarImagen(event) {
     const modal = document.getElementById("modal-imagen");
     if (modal) {
-        modal.style.display = "none";
+        modal.style.setProperty("display", "none", "important");
     }
 }
 

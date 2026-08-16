@@ -12,26 +12,46 @@
 <body>
     <header class="header">
         <div class="header-content">
-            <img src="img/LOGO_REDONDO.png" alt="Logo El Cielito" class="header-logo">
+            <!-- Grupo de Logo + Título -->
+            <div class="brand-group">
+                <img src="img/LOGO_REDONDO.png" alt="Logo El Cielito" class="header-logo">
+                <h1 id="main-title">CATALOGO <br> <span>WEB</span></h1>
+            </div>
 
-            <h1 id="main-title">EL CIELITO <br> <span>DE ELIANA</span></h1>
+            <!-- Buscador extendido -->
+            <div class="search-container">
+                <input type="text" id="buscador" placeholder="Buscar productos..." onkeyup="buscarProductos()">
+                <button class="btn-search-icon"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </header>
 
-            <!-- Contenedor alineado a la derecha para Carrito y Volver -->
-            <div class="header-acciones">
-                <button onclick="abrirModal()" class="btn-cart-header">
-                    <i class="fas fa-shopping-cart"></i>
-                    <span id="cart-counter">0 productos</span>
+    <!-- BARRA NAVEGADORA Y ACCIONES (Coral) -->
+    <nav class="nav-bar">
+        <div class="nav-content">
+            <div class="nav-left">
+                <button class="btn-categoria-nav">
+                    <i class="fas fa-bars"></i> Categorías
                 </button>
+                <span class="nav-link">Tienda</span>
+            </div>
+
+            <div class="header-acciones">
                 <button id="btn-volver" onclick="mostrarRubros()" class="btn-volver-estilo" style="display: none;">
                     <i class="fas fa-arrow-left"></i> VOLVER
                 </button>
+                <button onclick="abrirModal()" class="btn-cart-header">
+                    <i class="fas fa-shopping-cart"></i> <span id="cart-counter">$0</span>
+                </button>
             </div>
         </div>
+    </nav>
 
-        <div class="search-container">
-            <input type="text" id="buscador" placeholder="¿Qué estás buscando?" onkeyup="buscarProductos()">
-        </div>
-    </header>
+    <!-- BANNER DE PORTADA / PROMOCIÓN -->
+    <div id="banner-promocional" class="banner-promo">
+        <p class="promo-text"><i class="fas fa-dollar-sign"></i> PRECIOS EXCLUSIVOS PARA COMPRAS WEB <i
+                class="fas fa-dollar-sign"></i></p>
+    </div>
 
     <div id="filtros-textil" class="sub-rubros" style="display: none;">
         <button class="btn-sub btn-sub-inactivo" disabled>HOMBRE</button>
@@ -45,6 +65,11 @@
     <main class="container">
         <section id="productos-grid" class="grid-container"></section>
     </main>
+
+    <!-- BANNER INFERIOR PRE-FOOTER (Bright Teal) -->
+    <div class="footer-banner">
+        <span>🌈 EL CIELITO DE ELIANA</span>
+    </div>
 
     <!-- MODAL DEL CARRITO -->
     <div id="modal-carrito" class="modal">
@@ -71,7 +96,7 @@
         </div>
     </div>
 
-    <!-- MODAL DE ZOOM CON DETALLE DE PRODUCTO -->
+    <!-- MODAL DE ZOOM -->
     <div id="modal-imagen" class="modal-img" onclick="cerrarImagen(event)">
         <div class="modal-zoom-contenido" onclick="event.stopPropagation()">
             <span class="close-img-btn" onclick="cerrarImagen(event)">&times;</span>
@@ -96,7 +121,6 @@
 
     <footer class="main-footer">
         <div class="footer-info">
-            <h3>🌈 EL CIELITO DE ELIANA</h3>
             <p><i class="fas fa-map-marker-alt"></i> Sebastián Gaboto 1412, Córdoba</p>
             <p><i class="fas fa-phone-alt"></i> 3513018831</p>
             <div class="social-links">
